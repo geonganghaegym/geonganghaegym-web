@@ -55,7 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          repository: to-be-healthy/k8s-manifests
+          repository: seonwooj0810-homelab/homelab-gitops
           token: ${{ secrets.MANIFEST_REPO_TOKEN }}
           ref: main
 
