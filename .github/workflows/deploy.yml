@@ -9,7 +9,7 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE: ghcr.io/to-be-healthy/frontend
+  IMAGE: ghcr.io/geonganghaegym/geonganghaegym-web
 
 jobs:
   build-push:
@@ -62,15 +62,15 @@ jobs:
       - uses: imranismail/setup-kustomize@v2
 
       - name: Bump frontend image tag
-        working-directory: apps/tobehealthy/frontend
+        working-directory: apps/geonganghaegym/frontend
         run: |
-          kustomize edit set image ghcr.io/to-be-healthy/frontend=ghcr.io/to-be-healthy/frontend:${{ needs.build-push.outputs.tag }}
+          kustomize edit set image ghcr.io/to-be-healthy/frontend=ghcr.io/geonganghaegym/geonganghaegym-web:${{ needs.build-push.outputs.tag }}
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add apps/tobehealthy/frontend/kustomization.yaml
+          git add apps/geonganghaegym/frontend/kustomization.yaml
           if git diff --staged --quiet; then
             echo "No image change"
             exit 0
