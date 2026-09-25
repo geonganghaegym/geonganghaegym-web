@@ -20,7 +20,9 @@ describe('resolveBaseUri', () => {
   });
 
   it('허용되지 않은 origin이면 NEXT_PUBLIC_WEB_URI로 폴백한다.', () => {
-    expect(resolveBaseUri('https://evil.example.com')).toBe('https://geonganghaejim.site');
+    expect(resolveBaseUri('https://evil.example.com')).toBe(
+      'https://geonganghaejim.site'
+    );
     expect(resolveBaseUri('https://geonganghaejim.site.evil.com')).toBe(
       'https://geonganghaejim.site'
     );
