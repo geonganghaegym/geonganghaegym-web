@@ -25,7 +25,9 @@ spec:
       containers:
         - name: frontend
           image: ghcr.io/geonganghaegym/geonganghaegym-web:placeholder
-          imagePullPolicy: IfNotPresent
+          # 같은 태그로 다시 빌드(gh run rerun)해도 노드 캐시 이미지를 쓰지 않도록 매번 받는다.
+          # IfNotPresent였을 때 GitHub 변수(NEXT_PUBLIC_*)를 바꿔 재빌드해도 옛 번들이 서빙됐다(2026-09-26).
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
               name: http
