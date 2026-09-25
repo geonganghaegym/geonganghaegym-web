@@ -59,6 +59,18 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'health.junghaebom.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'geonganghaegym.junghaebom.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'healthy-bucket-s3.s3.ap-northeast-2.amazonaws.com',
         port: '',
         pathname: '/**',
@@ -66,12 +78,6 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'to-be-healthy-bucket.s3.ap-northeast-2.amazonaws.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.to-be-healthy.shop',
         port: '',
         pathname: '/**',
       },
