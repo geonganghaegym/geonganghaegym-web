@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 import { SocialProvider, useAuthAction, useSocialSignInMutation } from '@/entity/auth';
+import { useToast } from '@/shared/ui';
 
 interface StateType {
   memberType: 'trainer' | 'student';
@@ -18,6 +19,7 @@ export default function Page({ params }: Props) {
   const router = useRouter();
   const { mutate } = useSocialSignInMutation();
   const { setUserInfo } = useAuthAction();
+  const { errorToast } = useToast();
 
   const provider = params.provider;
   const searchParams = useSearchParams();
@@ -47,7 +49,7 @@ export default function Page({ params }: Props) {
     const stringifiedValue = localStorage.getItem(state);
     localStorage.removeItem(state);
     if (!stringifiedValue) {
-      alert('문제가 발생했습니다.');
+      errorToast();
       return router.replace('/');
     }
 
@@ -77,8 +79,7 @@ export default function Page({ params }: Props) {
           router.push(`/${data.memberType?.toLowerCase()}`);
         },
         onError: (error) => {
-          const message = error.response?.data.message ?? '문제가 발생했습니다.';
-          alert(message);
+          errorToast(error.response?.data.message);
           router.replace('/');
         },
       }
