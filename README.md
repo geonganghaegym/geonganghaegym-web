@@ -1,11 +1,11 @@
 <p align="center">
-    <img src="https://github.com/to-be-healthy/FrontEnd/assets/102174146/f0629a08-f862-4b67-bf93-d52df57acb79" alt="건강해짐 로고 이미지" >
+    <img src="https://github.com/geonganghaegym/geonganghaegym-web/assets/102174146/f0629a08-f862-4b67-bf93-d52df57acb79" alt="건강해짐 로고 이미지" >
     <br />
     <h1 align="center">건강해짐</h1>
     <p align="center">피트니스 센터, 트레이너와 회원을 위한 일정 관리 앱</p>
     <br />
     <p align="center">
-      <a href="https://main.to-be-healthy.shop/">웹 사이트</a>
+      <a href="https://geonganghaejim.site/">웹 사이트</a>
 <!--       .
       <a href="#">App</a> -->
     </p align="center">
@@ -15,11 +15,11 @@
 
 ## 서비스 개요
 
-![건강해짐 배너 sns](https://github.com/to-be-healthy/FrontEnd/assets/102174146/d1682aea-4a3e-4c3e-84fc-9c55b3626547)
+![건강해짐 배너 sns](https://github.com/geonganghaegym/geonganghaegym-web/assets/102174146/d1682aea-4a3e-4c3e-84fc-9c55b3626547)
 
 ### PT 스케줄 관리
 
-![건강해짐 배너 sns (1)](https://github.com/to-be-healthy/FrontEnd/assets/102174146/96784978-d903-47bf-832d-8433da311ae8)
+![건강해짐 배너 sns (1)](https://github.com/geonganghaegym/geonganghaegym-web/assets/102174146/96784978-d903-47bf-832d-8433da311ae8)
 
 아직도 트레이너가 수기로 일정을 메모하고 카카오톡 메신저로 회원 관리를 하나요?
 
@@ -31,7 +31,7 @@
 
 ### 체계적인 회원 관리
 
-![건강해짐 배너 sns (3)](https://github.com/to-be-healthy/FrontEnd/assets/102174146/05e70f40-4c75-4349-bfaa-fedc69cbc923)
+![건강해짐 배너 sns (3)](https://github.com/geonganghaegym/geonganghaegym-web/assets/102174146/05e70f40-4c75-4349-bfaa-fedc69cbc923)
 
 스케줄 관리 뿐만 아니라 헬스장 회원에 대한 체계적인 관리도 가능해요.
 
@@ -45,11 +45,7 @@
 
 ### Production
 
-[운영 환경](https://main.to-be-healthy.shop/)
-
-### Development
-
-[개발 환경 데모](https://www.dev.to-be-healthy.shop/)
+[운영 환경](https://geonganghaejim.site/)
 
 ### 테스트계정
 
@@ -60,9 +56,9 @@
 ### Local
 
 ```
-git clone https://github.com/to-be-healthy/FrontEnd.git
+git clone https://github.com/geonganghaegym/geonganghaegym-web.git
 
-cd FrontEnd
+cd geonganghaegym-web
 npm i
 npm run dev
 ```
@@ -84,7 +80,7 @@ npm run dev
 
 ### 프로젝트 구조
 
-<img width="187" alt="image" src="https://github.com/to-be-healthy/FrontEnd/assets/102174146/3258f939-5113-4eef-85c0-907da1630b39">
+<img width="187" alt="image" src="https://github.com/geonganghaegym/geonganghaegym-web/assets/102174146/3258f939-5113-4eef-85c0-907da1630b39">
 
 <br />
 

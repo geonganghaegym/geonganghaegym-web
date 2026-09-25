@@ -24,7 +24,7 @@ spec:
         - name: ghcr-pull
       containers:
         - name: frontend
-          image: ghcr.io/to-be-healthy/frontend:placeholder
+          image: ghcr.io/geonganghaegym/geonganghaegym-web:placeholder
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
