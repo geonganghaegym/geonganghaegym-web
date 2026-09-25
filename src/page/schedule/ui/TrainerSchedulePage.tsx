@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { BASE_REDIRECT_URI } from '@/entity/auth';
+import { getBaseRedirectUri } from '@/entity/auth';
 import { useMyInfoQuery } from '@/feature/mypage';
 import { useWeeklySchedules, WeeklyTimetable } from '@/feature/schedule';
 import { IconCalendarX, IconGear, IconShare } from '@/shared/assets';
@@ -28,7 +28,7 @@ export const TrainerSchedulePage = () => {
   } = useWeeklySchedules();
 
   const copyScheduleUrl = async () => {
-    const trainerScheduleUrl = `${BASE_REDIRECT_URI}/schedule/${userInfo?.id}`;
+    const trainerScheduleUrl = `${getBaseRedirectUri()}/schedule/${userInfo?.id}`;
 
     if (typeof navigator.share !== 'undefined') {
       await navigator.share({

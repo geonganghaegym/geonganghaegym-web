@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 
 import { api, BaseError, BaseResponse } from '@/shared/api';
 
-import { appleRedirectUri, googleRedirectUri, kakaoRedirectUri } from '../consts';
+import { getRedirectUri } from '../consts';
 import { SignUpRequest, SocialProvider, UserInfo } from '../model/types';
 import { authApi } from './authApi';
 
@@ -112,14 +112,9 @@ interface SocialSignInRequest {
 export const useSocialSignInMutation = () => {
   return useMutation<BaseResponse<UserInfo>, BaseError, SocialSignInRequest>({
     mutationFn: async ({ provider, ...payload }) => {
-      if (provider === 'kakao') {
-        Object.assign(payload, { redirectUrl: kakaoRedirectUri });
-      }
-      if (provider === 'google') {
-        Object.assign(payload, { redirectUrl: googleRedirectUri });
-      }
-      if (provider === 'apple') {
-        Object.assign(payload, { redirectUrl: appleRedirectUri });
+      // 네이버는 토큰 교환에 redirect_uri 를 쓰지 않는다.
+      if (provider !== 'naver') {
+        Object.assign(payload, { redirectUrl: getRedirectUri(provider) });
       }
       const result = await api.post<BaseResponse<UserInfo>>(
         `/api/v1/auth/access-token/${provider}`,

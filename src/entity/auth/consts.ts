@@ -1,42 +1,57 @@
 import { SocialProvider } from './model/types';
 
-const BASE_REDIRECT_URI =
+// 같은 배포가 세 호스트로 서비스된다. OAuth state·토큰이 origin별 localStorage에 있으므로
+// 로그인을 시작한 origin으로 콜백을 받아야 한다. 백엔드 허용 목록(OAuthProperties)과 맞춘다.
+const ALLOWED_ORIGINS = [
+  'https://geonganghaejim.site',
+  'https://health.junghaebom.com',
+  'https://geonganghaegym.junghaebom.com',
+];
+
+const resolveBaseUri = (origin?: string) =>
+  (origin && ALLOWED_ORIGINS.includes(origin) ? origin : undefined) ??
   process.env.NEXT_PUBLIC_WEB_URI ??
-  (typeof window !== 'undefined' ? window.location.origin : undefined) ??
+  origin ??
   '';
+
+// 모듈 평가 시점(SSR)에 고정되지 않도록 호출 시점에 브라우저 origin을 읽는다.
+const getBaseRedirectUri = () =>
+  resolveBaseUri(typeof window !== 'undefined' ? window.location.origin : undefined);
 
 const KAKAO_CLIENT_ID = process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID;
 const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
 const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 const APPLE_CLIENT_ID = process.env.NEXT_PUBLIC_APPLE_CLIENT_ID;
 
-const genRedirectUri = (provider: SocialProvider) =>
-  `${BASE_REDIRECT_URI}/${provider}/callback`;
+// 애플은 form_post 라 API 라우트(/api/callback/apple)가 받아 /apple/callback 으로 넘긴다.
+const getRedirectUri = (provider: SocialProvider) =>
+  provider === 'apple'
+    ? `${getBaseRedirectUri()}/api/callback/apple`
+    : `${getBaseRedirectUri()}/${provider}/callback`;
 
-const kakaoRedirectUri = genRedirectUri('kakao');
-const naverRedirectUri = genRedirectUri('naver');
-const googleRedirectUri = genRedirectUri('google');
-// const appleRedirectUri = genRedirectUri('apple');
-const appleRedirectUri = `${BASE_REDIRECT_URI}/api/callback/apple`;
-
-const KAKAO_SOCIAL_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=${kakaoRedirectUri}&response_type=code`;
-const NAVER_SOCIAL_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?client_id=${NAVER_CLIENT_ID}&redirect_uri=${naverRedirectUri}&response_type=code`;
-const GOOGLE_SOCIAL_AUTH_URL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${googleRedirectUri}&response_type=code&scope=email profile`;
-const APPLE_SOCIAL_AUTH_URL = `https://appleid.apple.com/auth/authorize?client_id=${APPLE_CLIENT_ID}&redirect_uri=${appleRedirectUri}&response_type=code id_token&scope=name email&response_mode=form_post`;
+const getSocialAuthUrl = (provider: SocialProvider) => {
+  const redirectUri = getRedirectUri(provider);
+  switch (provider) {
+    case 'kakao':
+      return `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=${redirectUri}&response_type=code`;
+    case 'naver':
+      return `https://nid.naver.com/oauth2.0/authorize?client_id=${NAVER_CLIENT_ID}&redirect_uri=${redirectUri}&response_type=code`;
+    case 'google':
+      return `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${redirectUri}&response_type=code&scope=email profile`;
+    case 'apple':
+      return `https://appleid.apple.com/auth/authorize?client_id=${APPLE_CLIENT_ID}&redirect_uri=${redirectUri}&response_type=code id_token&scope=name email&response_mode=form_post`;
+  }
+};
 
 const POLICY_URL = 'https://mewing-sun-887.notion.site/30a82fa5850c4a90b73f542f9916a735';
 const PRIVACY_URL =
   'https://mewing-sun-887.notion.site/fcc610c6a4c04ae2813be8ff3d98c56b?pvs=4';
 
 export {
-  APPLE_SOCIAL_AUTH_URL,
-  appleRedirectUri,
-  BASE_REDIRECT_URI,
-  GOOGLE_SOCIAL_AUTH_URL,
-  googleRedirectUri,
-  KAKAO_SOCIAL_AUTH_URL,
-  kakaoRedirectUri,
-  NAVER_SOCIAL_AUTH_URL,
+  getBaseRedirectUri,
+  getRedirectUri,
+  getSocialAuthUrl,
   POLICY_URL,
   PRIVACY_URL,
+  resolveBaseUri,
 };
