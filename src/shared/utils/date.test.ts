@@ -9,6 +9,16 @@ import {
   timeToDecimal,
 } from './date';
 
+// 테스트와 함수가 각각 현재 시각을 읽으므로, 그 사이에 1ms만 지나도 "2일 후"가 "1일 후"로 잘린다.
+// 파일 전체에서 현재 시각을 고정한다. (2024-07-10 수요일 정오)
+beforeEach(() => {
+  jest.useFakeTimers().setSystemTime(new Date('2024-07-10T12:00:00'));
+});
+
+afterEach(() => {
+  jest.useRealTimers();
+});
+
 describe('getStartOfWeek', () => {
   it('주어진 Date 객체에 대해 해당 주의 시작일(월요일)을 반환해야 한다.', () => {
     const date = dayjs('2024-07-11').toDate();
