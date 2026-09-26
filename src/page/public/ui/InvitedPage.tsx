@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 import { SocialSignIn, useInvitationInfoQuery } from '@/feature/auth';
 import { Typography } from '@/shared/mixin';
@@ -17,11 +18,12 @@ const InvitedPage = () => {
 
   const { data, isPending, error } = useInvitationInfoQuery(uuid);
 
-  if (error !== null) {
-    const message = error?.response?.data.message;
-    alert(message);
+  // 렌더 중에 alert·이동을 하면 리렌더마다 반복된다 — 에러가 생겼을 때 한 번만 처리한다.
+  useEffect(() => {
+    if (error === null) return;
+    alert(error?.response?.data.message);
     window.location.href = '/?type=student';
-  }
+  }, [error]);
 
   return (
     !isPending &&

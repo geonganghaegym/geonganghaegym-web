@@ -55,7 +55,7 @@ Each feature/entity folder follows a consistent structure:
 
 **UI components**: Shadcn/Radix UI in `shared/ui/`. Configured via `components.json` with aliases `@/shared` and `@/shared/utils/tw-utils`.
 
-**Layout compound component**: `widget/layout.tsx` — use as `<Layout type='student'>` with `Layout.Header`, `Layout.Contents`, `Layout.BottomArea`.
+**Layout compound component**: `shared/ui/layout.tsx`(틀, 내비게이션 없음)와 `widget/layout.tsx`(역할별 하단 내비게이션을 붙인 래퍼). 페이지는 `<Layout type='student'>`(widget), feature·entity는 `@/shared/ui`의 `Layout`을 쓴다. `Layout.Header`, `Layout.Contents`, `Layout.BottomArea`.
 
 **Typography**: Use constants from `shared/mixin/typography.ts` (e.g., `HEADING_1`, `TITLE_1`, `BODY_2`).
 

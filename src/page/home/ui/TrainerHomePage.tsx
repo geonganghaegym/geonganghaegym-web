@@ -7,7 +7,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
-import { firebaseApp } from '@/app/_providers/Firebase';
 import { useHomeAlarmQuery } from '@/entity/alarm';
 import { useRegisterTokenMutation } from '@/feature/alarm';
 import { useAddStudentCourseMutation } from '@/feature/course';
@@ -16,6 +15,7 @@ import { AddStudentDialog } from '@/feature/manage';
 import { useMyInfoQuery } from '@/feature/mypage';
 import { TrainerSchedule } from '@/feature/schedule';
 import { IconAlarmWhite, IconCalendarX, IconMedalGold, IconPlus } from '@/shared/assets';
+import { firebaseApp } from '@/shared/lib/firebase';
 import { hasNativePushBridge } from '@/shared/lib/native-push';
 import { Typography } from '@/shared/mixin';
 import {

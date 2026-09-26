@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 dayjs.locale('ko');
 
 import isBetween from 'dayjs/plugin/isBetween';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import {
   ReservationBottomSheet,
@@ -52,14 +52,7 @@ export const StudentSchedulePage = () => {
   const [hasMounted, setHasMounted] = useState(false);
   const queryClient = useQueryClient();
 
-  const [scheduleListFormatDate, setScheduleListFormatDate] = useState(
-    dayjs(date).format('YYYY-MM-DD')
-  );
-
-  useEffect(() => {
-    const dateFormattedWithHyphen = dayjs(date).format('YYYY-MM-DD');
-    setScheduleListFormatDate(dateFormattedWithHyphen);
-  }, [date]);
+  const scheduleListFormatDate = dayjs(date).format('YYYY-MM-DD');
 
   const { data: scheduleListData, isPending } =
     useScheduleListQuery(scheduleListFormatDate);

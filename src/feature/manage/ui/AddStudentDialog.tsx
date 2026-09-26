@@ -3,10 +3,9 @@ import Link from 'next/link';
 import { IconPeoplePlus, IconPeoples, IconPlus } from '@/shared/assets';
 import CloseIcon from '@/shared/assets/images/icon_close.svg';
 import { Typography } from '@/shared/mixin';
-import { Button } from '@/shared/ui';
+import { Button, Layout } from '@/shared/ui';
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from '@/shared/ui/dialog';
 import { cn } from '@/shared/utils';
-import { Layout } from '@/widget';
 
 export const AddStudentDialog = ({ children }: { children?: React.ReactNode }) => {
   return (

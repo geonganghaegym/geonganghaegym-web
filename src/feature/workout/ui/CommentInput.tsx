@@ -2,9 +2,8 @@
 
 import { IconArrowTop } from '@/shared/assets';
 import { Typography } from '@/shared/mixin';
-import { Button } from '@/shared/ui';
+import { Button, Layout } from '@/shared/ui';
 import { cn } from '@/shared/utils';
-import { Layout } from '@/widget';
 
 import { useWorkoutCommentContext } from '../hook/useComment';
 

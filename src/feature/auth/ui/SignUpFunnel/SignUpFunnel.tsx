@@ -93,7 +93,7 @@ export const SignUpFunnel = ({
     clearErrors('userId');
 
     if (isIdVerified) {
-      setIsIdVerified(false); //TODO: 중복확인 후 글자 입력시 focus아웃됨
+      setIsIdVerified(false);
       setIdSuccessMsg('');
     }
   }, [userIdValue]);
@@ -209,7 +209,7 @@ export const SignUpFunnel = ({
         </h3>
 
         <div className='px-7'>
-          <Funnel>
+          <Funnel step={step}>
             <Step id={5}>
               <SetupPassword />
             </Step>
