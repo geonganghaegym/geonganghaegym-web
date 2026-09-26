@@ -13,7 +13,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-import { firebaseApp } from '@/app/_providers/Firebase';
 import { useHomeAlarmQuery } from '@/entity/alarm';
 import { useRegisterTokenMutation } from '@/feature/alarm';
 import { CourseCard, CourseCardContent, CourseCardHeader } from '@/feature/course';
@@ -29,6 +28,7 @@ import {
   IconCheck,
   IconLogo,
 } from '@/shared/assets';
+import { firebaseApp } from '@/shared/lib/firebase';
 import { Typography } from '@/shared/mixin';
 import {
   Card,

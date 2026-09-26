@@ -63,6 +63,7 @@ export {
 } from './input/OtpInput';
 export { PasswordInput } from './input/PasswordInput';
 export { TextInput } from './input/TextInput';
+export { Layout } from './layout';
 export { Progress } from './progress';
 export { ScrollArea, ScrollBar } from './scroll-area';
 export { Select } from './select';

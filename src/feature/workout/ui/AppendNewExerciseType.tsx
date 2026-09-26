@@ -15,6 +15,7 @@ import { useDebounce } from '@/shared/hooks';
 import { Typography } from '@/shared/mixin';
 import {
   Button,
+  Layout,
   Sheet,
   SheetClose,
   SheetContent,
@@ -23,7 +24,6 @@ import {
   useToast,
 } from '@/shared/ui';
 import { cn } from '@/shared/utils';
-import { Layout } from '@/widget';
 
 import { useDeleteExerciseMutation } from '../api/mutations';
 import { useWorkoutCategoryListQuery, useWorkoutTypeListQuery } from '../api/queries';
