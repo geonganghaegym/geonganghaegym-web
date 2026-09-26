@@ -24,7 +24,7 @@ export {
   useTrainerStudentLastReservationListQuery,
   useTrainerStudentReservationListQuery,
 } from './api/queries';
-export { CLASS_TIME_DEFAULT } from './consts';
+export { CLASS_TIME_DEFAULT, soldOutLabel } from './consts';
 export { useWeeklySchedules } from './hook/useWeeklySchedules';
 export type {
   AllScheduleData,

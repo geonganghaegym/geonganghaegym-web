@@ -8,7 +8,16 @@ interface AllScheduleData {
   trainerName: string;
   applicantName: string | null;
   waitingByName: string | null;
+  soldOutReason?: SoldOutReason | null;
 }
+
+/** reservationStatus가 SOLD_OUT일 때 서버가 함께 내려주는 마감 사유 */
+type SoldOutReason =
+  | 'PAST'
+  | 'MY_RESERVATION'
+  | 'RESERVATION_CLOSED'
+  | 'WAITING_FULL'
+  | 'WAITING_CLOSED';
 
 interface ScheduleData {
   scheduleId: number;
@@ -110,6 +119,7 @@ export type {
   ScheduleColor,
   ScheduleData,
   ScheduleOffset,
+  SoldOutReason,
   TodaySchedule,
   TrainerSchedule,
   TrainerWeeklySchedule,

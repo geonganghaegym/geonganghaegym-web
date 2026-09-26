@@ -13,6 +13,7 @@ import { useState } from 'react';
 
 import {
   ReservationBottomSheet,
+  soldOutLabel,
   StudentMyReservationSchedule,
   StudentMyWaitingSchedule,
   useScheduleListQuery,
@@ -246,7 +247,7 @@ export const StudentSchedulePage = () => {
                                   'flex h-full w-full flex-col items-center justify-center rounded-lg bg-gray-200 py-[15px] text-gray-400'
                                 )}>
                                 <span>{`${hours}:${minutes}`}</span>
-                                <span>마감</span>
+                                <span>{soldOutLabel(item.soldOutReason)}</span>
                               </div>
                             )}
                           </li>
@@ -282,7 +283,7 @@ export const StudentSchedulePage = () => {
                                   'flex h-full w-full flex-col items-center justify-center rounded-lg bg-gray-200 py-[15px] text-gray-400'
                                 )}>
                                 <span>{`${Number(hours) > 12 ? Number(hours) - 12 : 12}:${minutes}`}</span>
-                                <span>마감</span>
+                                <span>{soldOutLabel(item.soldOutReason)}</span>
                               </div>
                             )}
                           </li>
