@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent } from 'react';
 
-import { isComplimentaryAccount, useAuthAction, useAuthSelector } from '@/entity/auth';
+import { useAuthAction } from '@/entity/auth';
 import {
   useDeleteProfileImageMutation,
   useLogOutMutation,
@@ -39,7 +39,6 @@ const EditMyInfoPage = () => {
   const queryClient = useQueryClient();
   const { errorToast } = useToast();
   const { deleteUserInfo } = useAuthAction();
-  const { userId } = useAuthSelector(['userId']);
   const { data } = useMyInfoQuery();
   const { mutate: deleteProfileImage } = useDeleteProfileImageMutation();
   const { mutate: setProfileImage } = useSetProfileImageMutation();
@@ -226,15 +225,12 @@ const EditMyInfoPage = () => {
                     </div>
                   </div>
                 </Link>
-                {/* 체험 계정 비밀번호가 바뀌면 모든 사람의 체험하기가 막힌다 */}
-                {!isComplimentaryAccount(userId) && (
-                  <Link href={'./edit/password'}>
-                    <div className='flex items-center justify-between px-6 py-7'>
-                      <p className={cn(Typography.TITLE_1_SEMIBOLD)}>비밀번호 변경</p>
-                      <IconArrowRightSmall />
-                    </div>
-                  </Link>
-                )}
+                <Link href={'./edit/password'}>
+                  <div className='flex items-center justify-between px-6 py-7'>
+                    <p className={cn(Typography.TITLE_1_SEMIBOLD)}>비밀번호 변경</p>
+                    <IconArrowRightSmall />
+                  </div>
+                </Link>
               </div>
             </section>
           )}
@@ -244,15 +240,10 @@ const EditMyInfoPage = () => {
               onClick={onClickLogOut}>
               로그아웃
             </button>
-            {/* 체험 계정은 여러 사람이 공유하므로 탈퇴하지 못하게 한다 */}
-            {!isComplimentaryAccount(userId) && (
-              <>
-                <div className='h-4 w-[1px] bg-gray-300' />
-                <Link href={'./leave'} className={cn(Typography.BODY_2, 'text-gray-500')}>
-                  탈퇴하기
-                </Link>
-              </>
-            )}
+            <div className='h-4 w-[1px] bg-gray-300' />
+            <Link href={'./leave'} className={cn(Typography.BODY_2, 'text-gray-500')}>
+              탈퇴하기
+            </Link>
           </section>
         </Layout.Contents>
       )}
