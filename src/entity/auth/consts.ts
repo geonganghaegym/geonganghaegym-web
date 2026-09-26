@@ -43,12 +43,10 @@ const getSocialAuthUrl = (provider: SocialProvider) => {
   }
 };
 
-// 체험하기로 로그인하는 공유 계정. 백엔드 COMPLIMENTARY_ACCOUNT_USER_IDS와 맞춘다.
+// 체험하기로 로그인하는 공유 계정. 백엔드 Member.COMPLIMENTARY_ACCOUNT_USER_IDS와 맞춘다.
+// 탈퇴·계정 정보 변경은 메뉴를 숨기지 않고 백엔드가 거절한다(C_078).
 const COMPLIMENTARY_TRAINER_USER_ID = 'healthy-trainer0';
 const COMPLIMENTARY_STUDENT_USER_ID = 'healthy-student0';
-
-const isComplimentaryAccount = (userId?: string | null) =>
-  userId === COMPLIMENTARY_TRAINER_USER_ID || userId === COMPLIMENTARY_STUDENT_USER_ID;
 
 const POLICY_URL = 'https://mewing-sun-887.notion.site/30a82fa5850c4a90b73f542f9916a735';
 const PRIVACY_URL =
@@ -60,7 +58,6 @@ export {
   getBaseRedirectUri,
   getRedirectUri,
   getSocialAuthUrl,
-  isComplimentaryAccount,
   POLICY_URL,
   PRIVACY_URL,
   resolveBaseUri,

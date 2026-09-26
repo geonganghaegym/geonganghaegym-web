@@ -13,7 +13,6 @@ export {
   COMPLIMENTARY_TRAINER_USER_ID,
   getBaseRedirectUri,
   getSocialAuthUrl,
-  isComplimentaryAccount,
 } from './consts';
 export { auth, useAuthAction, useAuthSelector } from './model/store';
 export type {
