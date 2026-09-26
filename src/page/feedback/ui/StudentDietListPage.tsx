@@ -54,7 +54,9 @@ export const StudentDietListPage = () => {
   const router = useRouter();
   const { data: userInfo } = useMyInfoQuery();
 
-  const [selectedMonth, setSelectedMonth] = useState<Date>(dayjs(month).toDate());
+  const [selectedMonth, setSelectedMonth] = useState<Date>(() =>
+    dayjs(month).isValid() ? dayjs(month).toDate() : new Date()
+  );
   const [ref, inView] = useInView({
     threshold: 0.5,
   });
@@ -75,7 +77,7 @@ export const StudentDietListPage = () => {
   };
 
   useEffect(() => {
-    if (month) {
+    if (dayjs(month).isValid()) {
       setSelectedMonth(dayjs(month).toDate());
     }
   }, [month]);

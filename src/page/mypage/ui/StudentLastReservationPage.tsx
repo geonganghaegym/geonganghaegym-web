@@ -45,7 +45,9 @@ const StudentLastReservationPage = () => {
   const searchParams = useSearchParams();
   const month = searchParams.get('month');
 
-  const [selectedMonth, setSelectedMonth] = useState<Date>(dayjs(month).toDate());
+  const [selectedMonth, setSelectedMonth] = useState<Date>(() =>
+    dayjs(month).isValid() ? dayjs(month).toDate() : new Date()
+  );
 
   const router = useRouter();
   const { data } = useStudentMyLastReservationListQuery(

@@ -53,7 +53,9 @@ export const TrainerStudentDietListPage = ({ memberId }: Props) => {
   const name = searchParams.get('name');
   const { memberInfo } = useStudentInfo(memberId);
 
-  const [selectedMonth, setSelectedMonth] = useState<Date>(dayjs(month).toDate());
+  const [selectedMonth, setSelectedMonth] = useState<Date>(() =>
+    dayjs(month).isValid() ? dayjs(month).toDate() : new Date()
+  );
   const [ref, inView] = useInView({
     threshold: 0.5,
   });
@@ -87,7 +89,7 @@ export const TrainerStudentDietListPage = ({ memberId }: Props) => {
   };
 
   useEffect(() => {
-    if (month) {
+    if (dayjs(month).isValid()) {
       setSelectedMonth(dayjs(month).toDate());
     }
   }, [month]);
