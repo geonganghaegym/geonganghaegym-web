@@ -20,7 +20,7 @@ export const EmailInput = forwardRef<HTMLInputElement, EmailInputProps>(
           className={cn(
             Typography.BODY_1,
             twSelector('placeholder', Typography.BODY_1),
-            'diabled:bg-gray-100 h-full w-full rounded-md border border-solid border-gray-200 p-6 text-gray-800 outline-none placeholder:text-gray-500 autofill:shadow-[inset_0_0_0px_1000px_rgb(255,255,255)] focus:visible focus:border focus:border-primary-500 disabled:shadow-gray-100',
+            'diabled:bg-gray-100 h-full w-full rounded-md border border-solid border-gray-200 p-6 text-gray-800 outline-hidden placeholder:text-gray-500 autofill:shadow-[inset_0_0_0px_1000px_rgb(255,255,255)] focus:visible focus:border focus:border-primary-500 disabled:shadow-gray-100',
             className
           )}
           disabled={isEmailVerified}

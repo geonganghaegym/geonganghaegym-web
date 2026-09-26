@@ -7,15 +7,18 @@
   display: none;
 }
 
-.rdp {
+.rdp-root {
   margin: 0;
+  /* react-day-picker 10 기본값(42px)이 Tailwind 4 유틸리티(@layer)보다 우선하므로 v8과 같은 40px로 맞춘다 */
+  --rdp-day_button-width: 40px;
+  --rdp-day_button-height: 40px;
 }
 
-.rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+.rdp-day_button:hover:not([disabled]) {
   background-color: transparent;
 }
 
-.rdp-button {
+.rdp-day_button {
   border-radius: 9999px;
   font-size: 16px;
   font-style: normal;
@@ -32,4 +35,9 @@
   position: absolute;
   left: 50%;
   margin-left: -3px;
+}
+
+/* v8 style.css의 `.rdp-button[disabled]:not(.rdp-day_selected) { opacity: 0.25 }`를 v10 클래스명으로 옮김 */
+.rdp-day_button:disabled {
+  opacity: 0.25;
 }

@@ -147,9 +147,10 @@ export const StudentDietListPage = () => {
                           onClick={() => onClickDiet(diet.dietId)}>
                           <Card className='mb-5 w-full px-6 py-7'>
                             <CardHeader
-                              className={
-                                (Typography.TITLE_3, 'mb-4 text-left text-gray-600')
-                              }>
+                              className={cn(
+                                Typography.TITLE_3,
+                                'mb-4 text-left text-gray-600'
+                              )}>
                               {date === todayValue ? '오늘' : date}
                             </CardHeader>
                             <CardContent>

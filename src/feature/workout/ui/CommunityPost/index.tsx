@@ -4,9 +4,14 @@ import Image from 'next/image';
 
 import { IconAvatar, IconChat, IconLike } from '@/shared/assets';
 import { Typography } from '@/shared/mixin';
-import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  ImageSlide,
+} from '@/shared/ui';
 import { cn, formatTimestampToRelativeTime } from '@/shared/utils';
-import { ImageSlide } from '@/widget';
 
 import { CommunityWorkout } from '../../model/types';
 import { ExercisePreview } from './ExerciseInfo';
@@ -50,7 +55,7 @@ const CommunityPost = ({ workout }: { workout: CommunityWorkout }) => {
         <p
           className={cn(
             Typography.BODY_3,
-            'mb-5 line-clamp-2 h-full overflow-ellipsis text-black'
+            'mb-5 line-clamp-2 h-full text-ellipsis text-black'
           )}>
           {content}
         </p>

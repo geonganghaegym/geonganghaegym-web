@@ -41,7 +41,7 @@ const StudentLogPage = () => {
           />
         </div>
         {contents && contents.length > 0 && (
-          <div className='hide-scrollbar mt-1 flex h-full flex-1 flex-grow flex-col overflow-y-auto px-7 pb-7'>
+          <div className='hide-scrollbar mt-1 flex h-full flex-1 grow flex-col overflow-y-auto px-7 pb-7'>
             <div className='mb-7 flex w-full flex-col gap-y-6 pb-6'>
               {contents.length > 0 &&
                 contents.map((log) => {
@@ -58,7 +58,7 @@ const StudentLogPage = () => {
                           <p
                             className={cn(
                               Typography.BODY_3,
-                              'mt-5 line-clamp-2 h-full overflow-ellipsis text-black'
+                              'mt-5 line-clamp-2 h-full text-ellipsis text-black'
                             )}>
                             {log.content}
                           </p>

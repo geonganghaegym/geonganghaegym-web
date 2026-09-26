@@ -28,7 +28,7 @@ export const Layout = ({ type, className, children, ...props }: LayoutProps) => 
   return (
     <div className={'flex h-full items-center justify-center bg-black'}>
       <div
-        className={cn('flex h-full w-[var(--max-width)] flex-col bg-gray-100', className)}
+        className={cn('flex h-full w-(--max-width) flex-col bg-gray-100', className)}
         {...props}>
         {header}
         {contents}
@@ -54,7 +54,7 @@ Header.displayName = 'Header';
 
 const Contents = ({ children, className, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <main
-    className={cn('h-full w-full flex-1 flex-shrink-0 overflow-y-auto', className)}
+    className={cn('h-full w-full flex-1 shrink-0 overflow-y-auto', className)}
     {...props}>
     {children}
   </main>

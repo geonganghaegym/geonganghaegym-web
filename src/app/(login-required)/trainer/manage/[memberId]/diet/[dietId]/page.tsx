@@ -1,10 +1,11 @@
 import { TrainerStudentDietDetailPage } from '@/page/feedback';
 
 interface Props {
-  params: { memberId: number; dietId: number };
+  params: Promise<{ memberId: number; dietId: number }>;
 }
 
-const Page = ({ params }: Props) => {
+const Page = async (props: Props) => {
+  const params = await props.params;
   const memberId = params.memberId;
   const dietId = params.dietId;
   return <TrainerStudentDietDetailPage memberId={memberId} dietId={dietId} />;

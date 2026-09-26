@@ -1,6 +1,8 @@
 import { devtools, persist } from 'zustand/middleware';
 import { createWithEqualityFn } from 'zustand/traditional';
 
+import { nativePushCommand } from '@/shared/lib/native-push';
+import { clearSessionQueries } from '@/shared/lib/query-client';
 import { withSelector } from '@/shared/utils';
 
 import { UserInfo } from './types';
@@ -28,24 +30,38 @@ const authStore = () => DEFAULT_AUTH_STATE;
 
 const useAuthStore = createWithEqualityFn(
   persist(
-    devtools<AuthState>(authStore, [
-      'userId',
-      'memberType',
-      'refreshToken',
-      'accessToken',
-      'gymId',
-      'memberId',
-      'name',
-    ]),
+    devtools<AuthState>(authStore, { enabled: process.env.NODE_ENV !== 'production' }),
     { name: AUTH_STATE_NAME }
   )
 );
 
+let sessionRevision = 0;
+
+export const getAuthSessionRevision = () => sessionRevision;
+
+const clearSession = () => {
+  sessionRevision += 1;
+  clearSessionQueries();
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem('serviceWorkerRegistration');
+    void nativePushCommand('logout').catch(() => undefined);
+  }
+};
+
 const useAuthAction = (): AuthAction => ({
   setUserInfo: (userInfo) => {
+    const previous = useAuthStore.getState();
+    if (
+      ('userId' in userInfo && previous.userId !== userInfo.userId) ||
+      ('memberId' in userInfo && previous.memberId !== userInfo.memberId) ||
+      ('memberType' in userInfo && previous.memberType !== userInfo.memberType)
+    ) {
+      clearSession();
+    }
     useAuthStore.setState(() => ({ ...userInfo }));
   },
   deleteUserInfo: () => {
+    clearSession();
     useAuthStore.setState(authStore);
   },
 });

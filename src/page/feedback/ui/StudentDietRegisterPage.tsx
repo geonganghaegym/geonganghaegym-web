@@ -12,7 +12,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { DateFormatter, DayProps } from 'react-day-picker';
+import { DayButton, DayButtonProps, Formatters } from 'react-day-picker';
 
 import {
   RegisterAndEditDiet,
@@ -92,23 +92,23 @@ export const StudentDietRegisterPage = () => {
     }) ?? [];
 
   // //식단 등록한 날(블루닷)
-  const dietDay = (props: DayProps) => {
-    const isDiet = dietDates?.some(
-      (dietDate) =>
-        dietDate.getDate() === props.date.getDate() &&
-        dietDate.getMonth() === props.date.getMonth()
+  const dietDay = (props: DayButtonProps) => {
+    const isDiet = dietDates?.some((dietDate) =>
+      dayjs(dietDate).isSame(props.day.date, 'day')
     );
 
     return (
-      <div className='day-cell'>
-        {props.date.getDate()}
-        {isDiet && <span className='reserved-indicator'></span>}
-      </div>
+      <DayButton {...props}>
+        <div className='day-cell'>
+          {props.children}
+          {isDiet && <span className='reserved-indicator'></span>}
+        </div>
+      </DayButton>
     );
   };
 
   const modifiers = {
-    hidden: (day: string | number | Date | dayjs.Dayjs | null | undefined) =>
+    weekHidden: (day: string | number | Date | dayjs.Dayjs | null | undefined) =>
       isArrowToggle &&
       !dayjs(day).isBetween(currentWeek.start, currentWeek.end, null, '[]'),
     disabled: (day: Date) => {
@@ -125,13 +125,8 @@ export const StudentDietRegisterPage = () => {
   };
 
   // //상단 날짜 형식 변경
-  const formatCaption: DateFormatter = (date, options) => {
-    return (
-      <>
-        {`${format(date, 'yyyy', { locale: options?.locale })}년`}{' '}
-        {format(date, 'LLLL', { locale: options?.locale })}
-      </>
-    );
+  const formatCaption: Formatters['formatCaption'] = (date, options) => {
+    return `${format(date, 'yyyy', { locale: options?.locale })}년 ${format(date, 'LLLL', { locale: options?.locale })}`;
   };
 
   const clickCalendarArrow = () => {
@@ -266,7 +261,7 @@ export const StudentDietRegisterPage = () => {
         </h2>
       </Layout.Header>
       <Layout.Contents>
-        <article className='calendar-shadow rounded-bl-lg rounded-br-lg bg-white'>
+        <article className='calendar-shadow rounded-br-lg rounded-bl-lg bg-white'>
           {calendarMyDietData?.dietNoticeStatus === 'ENABLED' && (
             <div className='flex items-center justify-between bg-blue-50 px-7 py-5'>
               <div className='flex items-center justify-center'>
@@ -304,9 +299,9 @@ export const StudentDietRegisterPage = () => {
                   : isArrowToggle
                     ? 'h-[150px]'
                     : '',
-                'overflow-hidden px-7 pb-6 pt-8'
+                'overflow-hidden px-7 pt-8 pb-6'
               )}>
-              <div className='absolute right-7 top-8 z-10 flex items-center gap-8 py-2'>
+              <div className='absolute top-8 right-7 z-10 flex items-center gap-8 py-2'>
                 <button
                   onClick={
                     !isArrowToggle
@@ -347,23 +342,23 @@ export const StudentDietRegisterPage = () => {
                 required
                 selected={date}
                 onSelect={setDate}
-                toDate={today}
+                disabled={modifiers.disabled}
                 month={currentMonth}
                 onDayClick={handleMonthChange}
                 onMonthChange={handleMonthChange}
                 formatters={{ formatCaption }}
                 modifiersStyles={{
-                  hidden: { display: 'none' }, // 주간 표시할때 비활성화된 날짜 숨기기
+                  weekHidden: { display: 'none' }, // 주간 표시할때 비활성화된 날짜 숨기기
                 }}
                 fixedWeeks={true}
                 modifiers={{
-                  ...modifiers,
+                  weekHidden: modifiers.weekHidden,
                   reserved: dietDates,
                 }}
                 components={{
-                  DayContent: dietDay, //예약한 날 표시(블루닷)
+                  DayButton: dietDay, //예약한 날 표시(블루닷)
                 }}
-                classNames={{ nav: 'hidden', nav_button: 'hidden' }}
+                classNames={{ nav: 'hidden' }}
                 isToggle={isArrowToggle}
               />
             </div>
@@ -377,10 +372,10 @@ export const StudentDietRegisterPage = () => {
           </Button>
         </article>
 
-        <div className='flex flex-col justify-between px-7 pb-8 pt-6'>
+        <div className='flex flex-col justify-between px-7 pt-6 pb-8'>
           {images && date && (
             <Card className='w-full'>
-              <CardHeader className={(Typography.TITLE_3, 'mb-4 text-gray-600')}>
+              <CardHeader className={cn(Typography.TITLE_3, 'mb-4 text-gray-600')}>
                 {dayjs(date).format('MM월 DD일 (dd)')}
               </CardHeader>
               <CardContent>
@@ -394,7 +389,7 @@ export const StudentDietRegisterPage = () => {
           )}
         </div>
       </Layout.Contents>
-      <Layout.BottomArea className='px-7 pb-10 pt-7'>
+      <Layout.BottomArea className='px-7 pt-7 pb-10'>
         <Button
           size='full'
           onClick={onClickRegisterDiet}

@@ -11,4 +11,5 @@ export type { Comment, ContentType, DietImageData, DietImageType } from './model
 export { CommentInput as DietCommentInput } from './ui/CommentInput';
 export { CommentList as DietCommentList } from './ui/CommentList';
 export { DailyDiet } from './ui/DailyDiet';
+export { DietMealItem } from './ui/DietMealItem';
 export { TodayDiet } from './ui/TodayDiet';

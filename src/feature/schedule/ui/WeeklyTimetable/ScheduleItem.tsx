@@ -30,11 +30,12 @@ const ScheduleItem = ({ schedule }: { schedule: FlatSchedule }) => {
       <SheetTrigger tabIndex={-1} asChild>
         <div
           className={cn(
-            'absolute flex w-[63px] flex-col items-center justify-center border-transparent'
+            'absolute flex flex-col items-center justify-center overflow-hidden border-transparent'
           )}
           style={{
             top: `${offset.y * 64}px`,
-            left: `${offset.x * 64}px`,
+            left: `${(offset.x * 100) / 7}%`,
+            width: 'calc(100% / 7 - 1px)',
             height: `${duration * 64 - 1}px`,
             backgroundColor: `${color?.bg}`,
           }}>
@@ -46,12 +47,16 @@ const ScheduleItem = ({ schedule }: { schedule: FlatSchedule }) => {
                   backgroundColor: `${color?.border}`,
                 }}
               />
-              <p className={cn(Typography.HEADING_5)}>{applicantName}</p>
+              <p className={cn(Typography.HEADING_5, 'max-w-full truncate px-1')}>
+                {applicantName}
+              </p>
             </>
           )}
           {reservationStatus === 'NO_SHOW' && (
             <>
-              <p className={cn(Typography.HEADING_5)}>{applicantName}</p>
+              <p className={cn(Typography.HEADING_5, 'max-w-full truncate px-1')}>
+                {applicantName}
+              </p>
               <span className='text-[10px] text-gray-400'>미출석</span>
             </>
           )}

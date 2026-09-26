@@ -87,12 +87,12 @@ const Header = () => {
             게시글을 삭제하시겠습니까?
           </AlertDialogHeader>
           <AlertDialogFooter className='grid w-full grid-cols-2 items-center justify-center gap-3'>
-            <AlertDialogCancel className='mt-0 h-[48px] rounded-md bg-gray-100 text-base font-normal text-gray-600'>
+            <AlertDialogCancel className='mt-0 h-12 rounded-md bg-gray-100 text-base font-normal text-gray-600'>
               취소
             </AlertDialogCancel>
             <AlertDialogAction
               asChild
-              className='mt-0 h-[48px] rounded-md bg-point text-base font-normal text-white'>
+              className='mt-0 h-12 rounded-md bg-point text-base font-normal text-white'>
               <Button variant='ghost' onClick={deleteLog}>
                 삭제
               </Button>

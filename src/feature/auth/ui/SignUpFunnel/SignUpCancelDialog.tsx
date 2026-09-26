@@ -42,10 +42,10 @@ export const SignUpCancelDialog = ({ type }: { type: string | null | undefined }
         <AlertDialogFooter className='grid w-full grid-cols-2 items-center justify-center gap-3'>
           <AlertDialogAction
             asChild
-            className='mt-0 h-[48px] rounded-md bg-[#E2F1FF] text-primary-500'>
+            className='mt-0 h-12 rounded-md bg-[#E2F1FF] text-primary-500'>
             <Link href={`/sign-in?type=${validType}`}>확인</Link>
           </AlertDialogAction>
-          <AlertDialogCancel className='mt-0 h-[48px] rounded-md bg-primary-500 text-white'>
+          <AlertDialogCancel className='mt-0 h-12 rounded-md bg-primary-500 text-white'>
             취소
           </AlertDialogCancel>
         </AlertDialogFooter>

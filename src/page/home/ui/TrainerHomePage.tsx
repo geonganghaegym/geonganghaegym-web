@@ -16,6 +16,7 @@ import { AddStudentDialog } from '@/feature/manage';
 import { useMyInfoQuery } from '@/feature/mypage';
 import { TrainerSchedule } from '@/feature/schedule';
 import { IconAlarmWhite, IconCalendarX, IconMedalGold, IconPlus } from '@/shared/assets';
+import { hasNativePushBridge } from '@/shared/lib/native-push';
 import { Typography } from '@/shared/mixin';
 import {
   Button,
@@ -127,6 +128,7 @@ export const TrainerHomePage = () => {
   };
 
   const onMessageFCM = async () => {
+    if (hasNativePushBridge()) return;
     //서비스워커의 토큰은 한번 등록하면 안바뀜
     if (!('serviceWorker' in navigator && 'Notification' in window)) return;
     // 알림을 거부했으면 토큰을 받을 수 없다
@@ -153,7 +155,7 @@ export const TrainerHomePage = () => {
         <Link href={'/trainer/alarm'} className='relative'>
           <span
             className={cn(
-              homeAlarmData && 't-0 absolute -right-[2px] h-1 w-1 rounded-full bg-point'
+              homeAlarmData && 't-0 absolute right-[-2px] h-1 w-1 rounded-full bg-point'
             )}
           />
           <IconAlarmWhite />

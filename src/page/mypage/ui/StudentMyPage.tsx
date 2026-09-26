@@ -64,14 +64,14 @@ export const StudentMyPage = () => {
                 수업일지
               </div>
             </Link>
-            <span className='h-11 w-[1px] border border-gray-200' />
+            <span className='h-11 w-px border border-gray-200' />
             <Link href={`/student/diet?month=${month}`} className='px-11 py-5'>
               <div className='flex flex-col items-center justify-center gap-y-5'>
                 <IconDiet />
                 식단
               </div>
             </Link>
-            <span className='h-11 w-[1px] border border-gray-200' />
+            <span className='h-11 w-px border border-gray-200' />
             <Link href='/student/workout' className='py-5 pl-9 pr-8'>
               <div className='flex flex-col items-center justify-center gap-y-5'>
                 <IconExerciseLog />

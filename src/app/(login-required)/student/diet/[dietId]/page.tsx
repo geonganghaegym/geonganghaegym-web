@@ -1,12 +1,15 @@
 'use client';
 
+import { use } from 'react';
+
 import { StudentDietDetailPage } from '@/page/feedback';
 
 interface Props {
-  params: { dietId: number };
+  params: Promise<{ dietId: number }>;
 }
 
-const Page = ({ params }: Readonly<Props>) => {
+const Page = (props: Readonly<Props>) => {
+  const params = use(props.params);
   return <StudentDietDetailPage dietId={params.dietId} />;
 };
 

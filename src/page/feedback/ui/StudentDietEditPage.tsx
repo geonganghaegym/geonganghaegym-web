@@ -137,14 +137,14 @@ export const StudentDietEditPage = ({ dietId }: Props) => {
                 onClick={() => router.back()}
                 className={cn(
                   Typography.TITLE_1_SEMIBOLD,
-                  'mt-0 h-[48px] rounded-md bg-primary-50  text-primary-500'
+                  'mt-0 h-12 rounded-md bg-primary-50  text-primary-500'
                 )}>
                 확인
               </AlertDialogAction>
               <AlertDialogCancel
                 className={cn(
                   Typography.TITLE_1_SEMIBOLD,
-                  'mt-0 h-[48px] rounded-md bg-primary-500 text-gray-600 text-white'
+                  'mt-0 h-12 rounded-md bg-primary-500 text-gray-600 text-white'
                 )}>
                 취소
               </AlertDialogCancel>
@@ -158,7 +158,8 @@ export const StudentDietEditPage = ({ dietId }: Props) => {
       <Layout.Contents className='px-7 py-6'>
         {dietDate && images && (
           <Card className='w-full'>
-            <CardHeader className={(Typography.TITLE_3, 'mb-4 text-left text-gray-600')}>
+            <CardHeader
+              className={cn(Typography.TITLE_3, 'mb-4 text-left text-gray-600')}>
               {dietDate}
             </CardHeader>
             <CardContent>

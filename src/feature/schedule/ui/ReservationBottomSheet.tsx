@@ -129,13 +129,13 @@ export const ReservationBottomSheet = ({ data, date }: Props) => {
         <SheetFooter className='flex flex-row items-center justify-center gap-3'>
           <SheetClose
             className={cn(
-              'h-[48px] w-full rounded-md bg-gray-100 text-gray-600',
+              'h-12 w-full rounded-md bg-gray-100 text-gray-600',
               Typography.TITLE_1_SEMIBOLD
             )}>
             아니요
           </SheetClose>
           <Button
-            className={cn('h-[48px] w-full rounded-md', Typography.TITLE_1_SEMIBOLD)}
+            className={cn('h-12 w-full rounded-md', Typography.TITLE_1_SEMIBOLD)}
             onClick={() => handleReservationSchedule(data.scheduleId)}>
             예약하기
           </Button>

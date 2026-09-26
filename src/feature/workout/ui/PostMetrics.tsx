@@ -14,6 +14,8 @@ import { Typography } from '@/shared/mixin';
 import { useToast } from '@/shared/ui';
 import { cn } from '@/shared/utils';
 
+import { workoutKeys } from '../api/queries';
+
 const PostMetrics = ({
   workoutHistoryId,
   liked: defaultLiked,
@@ -25,7 +27,7 @@ const PostMetrics = ({
   likeCnt: number;
   commentCnt: number;
 }) => {
-  const queryKey = ['workoutDetail', workoutHistoryId];
+  const queryKey = workoutKeys.detail(workoutHistoryId);
   const queryClient = useQueryClient();
 
   const { errorToast } = useToast();

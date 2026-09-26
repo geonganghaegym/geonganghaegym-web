@@ -5,15 +5,16 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { createRef, RefObject, useEffect, useRef, useState } from 'react';
 
+import { useImages } from '@/entity/image';
 import {
   AppendNewExerciseType,
   ComplexExercise,
   ExerciseType,
   useEditWorkoutMutation,
   useWorkoutDetailQuery,
-  useWorkoutImages,
   useWorkoutTypeListQuery,
 } from '@/feature/workout';
+import { workoutKeys } from '@/feature/workout/api/queries';
 import {
   IconCamera,
   IconClose,
@@ -30,7 +31,7 @@ const EditWorkoutPage = ({ workoutHistoryId }: { workoutHistoryId: number }) => 
   const router = useRouter();
   const queryClient = useQueryClient();
   const { errorToast } = useToast();
-  const { images, uploadFiles, updateImages } = useWorkoutImages();
+  const { images, uploadFiles, updateImages } = useImages();
 
   const { data, refetch } = useWorkoutDetailQuery(workoutHistoryId);
   const { data: pagedTypes } = useWorkoutTypeListQuery();
@@ -43,9 +44,9 @@ const EditWorkoutPage = ({ workoutHistoryId }: { workoutHistoryId: number }) => 
   const [viewMySelf, setViewMySelf] = useState(false);
   const [completedExercises, setCompletedExercises] = useState<ComplexExercise[]>([]);
 
-  const setNumRef = useRef<RefObject<HTMLInputElement>[]>([]);
-  const numberOfCyclesRef = useRef<RefObject<HTMLInputElement>[]>([]);
-  const weightRef = useRef<RefObject<HTMLInputElement>[]>([]);
+  const setNumRef = useRef<RefObject<HTMLInputElement | null>[]>([]);
+  const numberOfCyclesRef = useRef<RefObject<HTMLInputElement | null>[]>([]);
+  const weightRef = useRef<RefObject<HTMLInputElement | null>[]>([]);
 
   const appendExcercise = (newExcerciseTypes: ExerciseType[]) => {
     const newExcercises = newExcerciseTypes.map((item) => {
@@ -81,7 +82,10 @@ const EditWorkoutPage = ({ workoutHistoryId }: { workoutHistoryId: number }) => 
         onSuccess: async () => {
           await refetch();
           await queryClient.refetchQueries({
-            queryKey: ['workoutList'],
+            queryKey: workoutKeys.list(),
+          });
+          await queryClient.refetchQueries({
+            queryKey: workoutKeys.community(),
           });
           router.replace('/student/workout');
         },
@@ -241,7 +245,7 @@ const EditWorkoutPage = ({ workoutHistoryId }: { workoutHistoryId: number }) => 
                         inputMode='numeric'
                         className={cn(
                           Typography.TITLE_1_BOLD,
-                          'w-full bg-transparent text-center outline-none ring-0'
+                          'w-full bg-transparent text-center outline-hidden ring-0'
                         )}
                         onChange={(e) => {
                           const value =
@@ -285,7 +289,7 @@ const EditWorkoutPage = ({ workoutHistoryId }: { workoutHistoryId: number }) => 
                         inputMode='numeric'
                         className={cn(
                           Typography.TITLE_1_BOLD,
-                          'w-full bg-transparent text-center outline-none ring-0'
+                          'w-full bg-transparent text-center outline-hidden ring-0'
                         )}
                         onChange={(e) => {
                           const value =
@@ -330,7 +334,7 @@ const EditWorkoutPage = ({ workoutHistoryId }: { workoutHistoryId: number }) => 
                         inputMode='numeric'
                         className={cn(
                           Typography.TITLE_1_BOLD,
-                          'w-full bg-transparent text-center outline-none ring-0'
+                          'w-full bg-transparent text-center outline-hidden ring-0'
                         )}
                         onChange={(e) => {
                           const value =

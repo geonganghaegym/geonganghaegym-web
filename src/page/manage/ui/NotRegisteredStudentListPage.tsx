@@ -84,8 +84,8 @@ export const NotRegisteredStudentListPage = () => {
           processedMemberList.map(({ name, id, email }) => (
             <Card
               key={id}
-              className='my-[4px] flex w-full flex-row items-center justify-between px-6 py-7'>
-              <div className='flex flex-col gap-y-[4px]'>
+              className='my-1 flex w-full flex-row items-center justify-between px-6 py-7'>
+              <div className='flex flex-col gap-y-1'>
                 <p className={Typography.TITLE_1_BOLD}>{name}</p>
                 <span className={cn(Typography.BODY_4_REGULAR, 'text-gray-400')}>
                   {email}

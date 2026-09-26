@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { ChangeEvent, useState } from 'react';
 
 import { AddStudentDialog, RegisteredStudent } from '@/feature/manage';
-import { profileBorderStyleMapper } from '@/page/manage/utils';
 import {
   IconAlertCircle,
   IconPlus,
@@ -25,6 +24,7 @@ import {
 import { cn, twSelector } from '@/shared/utils';
 
 import { useRegisteredStudentsQuery } from '../api/queries';
+import { profileBorderStyleMapper } from '../utils';
 
 interface SortCondition<T> {
   label: string;
@@ -51,7 +51,7 @@ const StudentListController = (students: RegisteredStudent[]) => ({
   },
   sort: (condition: ((a: RegisteredStudent, b: RegisteredStudent) => number) | null) => {
     if (condition === null) return StudentListController(students);
-    const sortedStudents = students.sort(condition);
+    const sortedStudents = [...students].sort(condition);
     return StudentListController(sortedStudents);
   },
   get: () => students,
@@ -101,7 +101,7 @@ const StudentList = ({ callback }: { callback?: (memberId: number) => void }) =>
         </div>
       </div>
       {!isLoading && (
-        <div className='hide-scrollbar mt-1 flex h-full flex-1 flex-grow flex-col overflow-y-auto px-7'>
+        <div className='hide-scrollbar mt-1 flex h-full flex-1 grow flex-col overflow-y-auto px-7'>
           <div className='mb-4 flex items-center justify-between'>
             <p className={Typography.BODY_2}>
               총{' '}

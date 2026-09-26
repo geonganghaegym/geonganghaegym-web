@@ -82,16 +82,9 @@ const EditMyInfoPage = () => {
 
   const onClickLogOut = () => {
     logoutMutate(undefined, {
-      onSuccess: async () => {
+      onSuccess: () => {
         deleteUserInfo();
-        localStorage.clear();
-        if ('serviceWorker' in navigator) {
-          const registrations = await navigator.serviceWorker.getRegistrations();
-          for (const registration of registrations) {
-            await registration.unregister();
-          }
-        }
-        router.push('/');
+        router.replace('/');
       },
       onError: (error) => {
         const message = error.response?.data?.message ?? '문제가 발생했습니다.';
@@ -132,7 +125,7 @@ const EditMyInfoPage = () => {
                   className='hidden'
                   onChange={onChangeImage}
                 />
-                <DropdownMenuTrigger className='absolute -bottom-1 -right-1 select-none rounded-full border border-gray-300 bg-white p-2 outline-none ring-0'>
+                <DropdownMenuTrigger className='absolute -bottom-1 -right-1 select-none rounded-full border border-gray-300 bg-white p-2 outline-hidden ring-0'>
                   <IconCamera fill={'var(--gray-500)'} />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
@@ -154,7 +147,7 @@ const EditMyInfoPage = () => {
             <h3 className={cn(Typography.HEADING_2)}>{data?.name}</h3>
           </section>
           {isSocialAccount ? (
-            <section className='flex-grow'>
+            <section className='grow'>
               <div className='mx-7 mt-11 rounded-lg border border-gray-100'>
                 <div className='flex items-center justify-between border-b border-gray-100 px-6 py-7'>
                   <p className={cn(Typography.TITLE_1_SEMIBOLD)}>이름</p>
@@ -197,7 +190,7 @@ const EditMyInfoPage = () => {
               </div>
             </section>
           ) : (
-            <section className='flex-grow'>
+            <section className='grow'>
               <div className='mx-7 mt-11 rounded-lg border border-gray-100'>
                 <Link href={'./edit/name'}>
                   <div className='flex items-center justify-between border-b border-gray-100 px-6 py-7'>

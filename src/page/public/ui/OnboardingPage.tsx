@@ -30,7 +30,7 @@ const SelectLoginMethodPage = ({ memberType }: { memberType: string }) => {
       <Layout.Contents>
         <div
           className={
-            'mt-12 flex w-screen max-w-[var(--max-width)] flex-col items-center gap-y-9'
+            'mt-12 flex w-screen max-w-(--max-width) flex-col items-center gap-y-9'
           }>
           <h1
             className={cn(

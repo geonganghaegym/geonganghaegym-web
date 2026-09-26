@@ -18,7 +18,7 @@ export default function Page() {
 
   if (role === undefined) {
     return (
-      <div className='flex-center h-[100vh] w-[100vw] bg-primary-500'>
+      <div className='flex-center bg-primary-500 h-screen w-screen'>
         <Image
           src='/images/loading_splash.gif'
           width={88}

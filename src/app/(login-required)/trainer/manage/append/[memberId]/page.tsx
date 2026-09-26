@@ -1,10 +1,11 @@
 import { TrainerAppendStudentPage } from '@/page/manage';
 
 interface Props {
-  params: { memberId: number };
+  params: Promise<{ memberId: number }>;
 }
 
-const Page = ({ params }: Props) => {
+const Page = async (props: Props) => {
+  const params = await props.params;
   const memberId = params.memberId;
   return <TrainerAppendStudentPage memberId={memberId} />;
 };

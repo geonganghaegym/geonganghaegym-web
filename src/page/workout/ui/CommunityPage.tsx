@@ -69,7 +69,7 @@ const CommunityPage = () => {
 
       <Layout.Contents className='pt-6'>
         {posts && (
-          <div className='hide-scrollbar flex h-full flex-1 flex-grow flex-col overflow-y-auto px-7 pb-7'>
+          <div className='hide-scrollbar flex h-full flex-1 grow flex-col overflow-y-auto px-7 pb-7'>
             <div className='flex w-full flex-col gap-5'>
               {posts.length === 0 && <CommunityNoPosts />}
               {posts.length > 0 &&

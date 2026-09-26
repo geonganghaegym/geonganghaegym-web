@@ -15,6 +15,7 @@ import {
   WorkoutCommentInput,
   WorkoutCommentsWrapper,
 } from '@/feature/workout';
+import { workoutKeys } from '@/feature/workout/api/queries';
 import {
   IconBack,
   IconDotsVertical,
@@ -61,10 +62,13 @@ const StudentWorkoutDetailPage = ({ workoutHistoryId }: Props) => {
     mutate(workoutHistoryId, {
       onSuccess: async () => {
         await queryClient.refetchQueries({
-          queryKey: ['workoutList'],
+          queryKey: workoutKeys.list(),
+        });
+        await queryClient.refetchQueries({
+          queryKey: workoutKeys.community(),
         });
         queryClient.removeQueries({
-          queryKey: ['workoutDetail', workoutHistoryId],
+          queryKey: workoutKeys.detail(workoutHistoryId),
         });
         router.replace('/student/workout');
       },

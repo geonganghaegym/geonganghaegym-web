@@ -201,7 +201,7 @@ export const StudentMyReservationSchedule = ({ data }: Props) => {
             <SheetFooter className='flex flex-row items-center justify-center gap-3'>
               {isPastDate ? (
                 <Button
-                  className='h-[48px] w-full rounded-md'
+                  className='h-12 w-full rounded-md'
                   onClick={() => setIsReservationInfoSheetOpen(false)}>
                   확인
                 </Button>
@@ -209,14 +209,14 @@ export const StudentMyReservationSchedule = ({ data }: Props) => {
                 <>
                   <SheetClose
                     className={cn(
-                      'h-[48px] w-full rounded-md bg-gray-100 text-gray-600',
+                      'h-12 w-full rounded-md bg-gray-100 text-gray-600',
                       Typography.TITLE_1_SEMIBOLD
                     )}>
                     확인
                   </SheetClose>
                   <Button
                     className={cn(
-                      'h-[48px] w-full rounded-md bg-point',
+                      'h-12 w-full rounded-md bg-point',
                       Typography.TITLE_1_SEMIBOLD
                     )}
                     onClick={handleCancelReservation}>
@@ -247,14 +247,14 @@ export const StudentMyReservationSchedule = ({ data }: Props) => {
             <SheetFooter className='flex flex-row items-center justify-center gap-3'>
               <SheetClose
                 className={cn(
-                  'h-[48px] w-full rounded-md bg-gray-100 text-gray-600',
+                  'h-12 w-full rounded-md bg-gray-100 text-gray-600',
                   Typography.TITLE_1_SEMIBOLD
                 )}>
                 아니요
               </SheetClose>
               <Button
                 className={cn(
-                  'h-[48px] w-full rounded-md bg-point',
+                  'h-12 w-full rounded-md bg-point',
                   Typography.TITLE_1_SEMIBOLD
                 )}
                 onClick={() => handleCancelSchedule(data?.scheduleId)}>

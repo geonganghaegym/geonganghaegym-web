@@ -126,14 +126,14 @@ export const WaitingBottomSheet = ({ data, date }: Props) => {
         <SheetFooter className='flex flex-row items-center justify-center gap-3'>
           <SheetClose
             className={cn(
-              'h-[48px] w-full rounded-md bg-gray-100 text-gray-600',
+              'h-12 w-full rounded-md bg-gray-100 text-gray-600',
               Typography.TITLE_1_SEMIBOLD
             )}>
             아니요
           </SheetClose>
           <Button
             className={cn(
-              'h-[48px] w-full rounded-md bg-[#00C2FF]',
+              'h-12 w-full rounded-md bg-[#00C2FF]',
               Typography.TITLE_1_SEMIBOLD
             )}
             onClick={() => handleWaitingSchedule(data.scheduleId)}>

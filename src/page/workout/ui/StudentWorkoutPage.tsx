@@ -66,7 +66,7 @@ const StudentWorkoutPage = () => {
           className='px-7'
         />
         {data && (
-          <div className='hide-scrollbar mt-1 flex h-full flex-1 flex-grow flex-col overflow-y-auto px-7 pb-7'>
+          <div className='hide-scrollbar mt-1 flex h-full flex-1 grow flex-col overflow-y-auto px-7 pb-7'>
             <div>
               {data.pages.map((page, pageIndex) => (
                 <div key={pageIndex} className='flex w-full flex-col gap-y-6 pb-6'>

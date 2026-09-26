@@ -9,7 +9,7 @@ export const UserRoleMiddleware = ({
   memberType,
   children,
 }: {
-  memberType: 'STUDENT' | 'TRAINER';
+  memberType?: 'STUDENT' | 'TRAINER';
   children: React.ReactNode;
 }) => {
   const [role, setRole] = useState<string | null>();
@@ -27,16 +27,16 @@ export const UserRoleMiddleware = ({
   }
 
   // 다른 역할로 접근 시
-  if (typeof role === 'string' && role !== memberType) {
+  if (memberType && typeof role === 'string' && role !== memberType) {
     return redirect(`/${role.toLowerCase()}`);
   }
 
-  // 헬스장 미선택 시
-  if (gymId === null) {
+  // 헬스장 미선택 시 (select-gym 자체는 memberType 없이 로그인만 확인)
+  if (memberType && gymId === null) {
     return redirect('/select-gym');
   }
 
-  if (typeof role === 'string' && role === memberType) {
+  if (typeof role === 'string' && (!memberType || role === memberType)) {
     return children;
   }
 

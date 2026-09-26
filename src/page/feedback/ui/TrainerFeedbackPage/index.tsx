@@ -44,7 +44,7 @@ const TrainerFeedbackPage = () => {
         </h1>
       </Layout.Header>
       <Layout.Contents className='flex flex-col overflow-hidden'>
-        <div className='calendar-shadow relative rounded-bl-lg rounded-br-lg bg-white'>
+        <div className='calendar-shadow relative rounded-br-lg rounded-bl-lg bg-white'>
           <Calendar
             mode='single'
             showOutsideDays={true}
@@ -54,14 +54,14 @@ const TrainerFeedbackPage = () => {
             onDayClick={(day) => changeDate(day)}
             className={cn('px-7 py-6')}
             classNames={{
-              table: 'w-full',
-              caption: 'pt-0',
-              day_range_end: 'day-range-end',
+              month_grid: 'w-full',
+              month_caption: 'flex items-center justify-between pt-0',
+              range_end: 'day-range-end',
               nav: 'hidden',
-              nav_button: 'hidden',
-              cell: 'p-0 relative [&:has([aria-selected])]:bg-primary-500 [&:has([aria-selected])]:text-white [&:has([aria-selected])]:rounded-full focus-within:relative focus-within:z-20',
-              day_today: 'text-primary-500',
-              day_selected: 'bg-primary text-white',
+              day: 'p-0 relative focus-within:relative focus-within:z-20',
+              selected:
+                'bg-primary-500 text-white rounded-full [&>button]:bg-primary [&>button]:text-white',
+              today: '[&>button]:text-primary-500',
             }}
             formatters={{
               formatCaption: () => {
@@ -69,17 +69,17 @@ const TrainerFeedbackPage = () => {
               },
             }}
             modifiersStyles={{
-              hidden: { display: 'none' },
+              weekHidden: { display: 'none' },
               future: { color: 'var(--gray-400)' },
             }}
             modifiers={{
-              hidden: (day) => {
+              weekHidden: (day) => {
                 return !dayjs(day).isBetween(weekStart, weekEnd, null, '[]');
               },
               future: (day) => dayjs(day).isAfter(dayjs()),
             }}
           />
-          <div className='absolute right-7 top-6 flex items-center gap-8 py-[3.5px]'>
+          <div className='absolute top-6 right-7 flex items-center gap-8 py-[3.5px]'>
             <button
               onClick={() => changeDate(dayjs(date).subtract(7, 'days').toDate())}
               className='flex-center h-6 w-6'>
@@ -94,7 +94,7 @@ const TrainerFeedbackPage = () => {
           </div>
         </div>
         <Tabs
-          className='hide-scrollbar h-full gap-0 overflow-y-auto pb-0 pt-6'
+          className='hide-scrollbar h-full gap-0 overflow-y-auto pt-6 pb-0'
           defaultValue='lesson'>
           <TabsList>
             <TabsTrigger value='lesson'>수업</TabsTrigger>

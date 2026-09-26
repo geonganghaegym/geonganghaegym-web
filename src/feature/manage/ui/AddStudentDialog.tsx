@@ -18,7 +18,7 @@ export const AddStudentDialog = ({ children }: { children?: React.ReactNode }) =
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className='top-0 max-w-[var(--max-width)] translate-y-0 p-0'>
+      <DialogContent className='top-0 max-w-(--max-width) translate-y-0 p-0'>
         <Layout.Header className='flex-row-reverse'>
           <DialogClose asChild>
             <Button

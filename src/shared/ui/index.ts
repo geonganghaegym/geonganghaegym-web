@@ -52,6 +52,7 @@ export {
   DropdownMenuTrigger,
 } from './dropdown-menu';
 export { GenericForm } from './generic-form';
+export { ImageSlide } from './image-slide';
 export { EmailInput } from './input/EmailInput';
 export { Input } from './input/Input';
 export {

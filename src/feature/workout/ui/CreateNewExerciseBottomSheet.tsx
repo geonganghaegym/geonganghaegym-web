@@ -18,6 +18,7 @@ import {
 import { cn, twSelector } from '@/shared/utils';
 
 import { useCreateExerciseMutation } from '../api/mutations';
+import { workoutKeys } from '../api/queries';
 import { WorkoutCategory } from '../model/types';
 
 const CreateNewExerciseBottomSheet = ({
@@ -52,7 +53,7 @@ const CreateNewExerciseBottomSheet = ({
       {
         onSuccess: async () => {
           await queryClient.invalidateQueries({
-            queryKey: ['workoutList'],
+            queryKey: workoutKeys.typeList(),
           });
           setOpen(false);
         },

@@ -12,7 +12,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
     <div
       ref={ref}
       className={cn(
-        'relative h-[4px] w-full overflow-hidden rounded-full bg-blue-600/20',
+        'relative h-1 w-full overflow-hidden rounded-full bg-blue-600/20',
         className
       )}
       {...props}>

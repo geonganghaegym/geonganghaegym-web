@@ -67,7 +67,7 @@ const SheetContent = forwardRef<
     <SheetOverlay />
     <SheetPrimitive.Content
       ref={ref}
-      className={cn(sheetVariants({ side, headerType }), 'pt-[48px]', className)}
+      className={cn(sheetVariants({ side, headerType }), 'pt-12', className)}
       {...props}>
       {headerType === 'thumb' && (
         <div className='absolute left-1/2 top-4 h-1 w-[44px] -translate-x-1/2 rounded-lg bg-gray-200' />
@@ -76,7 +76,7 @@ const SheetContent = forwardRef<
       {headerType === 'close' && (
         <SheetPrimitive.Close
           className={cn(
-            'absolute right-7 top-7 ring-offset-background transition-opacity focus:outline-none disabled:pointer-events-none'
+            'absolute right-7 top-7 ring-offset-background transition-opacity focus:outline-hidden disabled:pointer-events-none'
           )}>
           <IconClose />
           <span className='sr-only'>Close</span>

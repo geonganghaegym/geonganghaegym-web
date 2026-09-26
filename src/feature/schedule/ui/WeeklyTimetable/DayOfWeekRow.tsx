@@ -119,16 +119,15 @@ const DayOfWeekRow = ({ startDate, flatSchedules }: Props) => {
             <SheetTrigger
               className={cn(
                 Typography.BODY_4_MEDIUM,
-                'flex-center h-[48px] w-[64px] flex-1 flex-col border border-l-0 border-gray-200 text-gray-700',
-                isToday && 'text-primary-500'
+                'flex-center h-12 min-w-0 flex-1 flex-col border border-l-0 border-gray-200 text-gray-700'
               )}
               tabIndex={-1}>
               {dayOfWeek}
               <p
                 className={cn(
                   Typography.TITLE_3,
-                  'text-gray-700',
-                  isToday && 'text-primary-500'
+                  'flex-center size-[26px] rounded-full text-gray-700',
+                  isToday && 'bg-primary-500 text-white'
                 )}>
                 {dayjs(day).format('D')}
               </p>

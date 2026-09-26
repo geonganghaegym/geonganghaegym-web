@@ -1,6 +1,276 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+  --color-primary: var(--primary-500);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --color-gray: hsl(var(--gray));
+
+  --color-blue-10: var(--blue-10);
+  --color-blue-50: var(--blue-50);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-point: var(--point-color);
+
+  --spacing-1: 4px;
+  --spacing-2: 6px;
+  --spacing-3: 8px;
+  --spacing-4: 10px;
+  --spacing-5: 12px;
+  --spacing-6: 16px;
+  --spacing-7: 20px;
+  --spacing-8: 24px;
+  --spacing-9: 28px;
+  --spacing-10: 32px;
+  --spacing-11: 36px;
+  --spacing-12: 48px;
+
+  --radius-lg: var(--radius-l);
+  --radius-md: var(--radius-m);
+  --radius-sm: var(--radius-s);
+
+  --animate-rolling: rolling 10s linear infinite;
+  --animate-rolling_clone: rolling_clone 10s linear infinite;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-calendar-accordion-down: calendar-accordion-down 0.2s ease-out;
+  --animate-calendar-accordion-up: calendar-accordion-up 0.2s ease-out;
+
+  --font-pretendard: Pretendard;
+
+  --shadow-sm: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0px 4px 12px 0px rgba(0, 0, 0, 0.16);
+  --shadow-lg: 0px 4px 8px 0px rgba(0, 0, 0, 0.16);
+  --shadow-timetable: shadow-timetable;
+  --shadow-nav: shadow-nav;
+
+  @keyframes rolling {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes rolling_clone {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes calendar-accordion-down {
+    from {
+      height: 150px;
+    }
+    to {
+      height: var(--radix-calendar-accordion-content-height);
+    }
+  }
+  @keyframes calendar-accordion-up {
+    from {
+      height: var(--radix-calendar-accordion-content-height);
+    }
+    to {
+      height: 150px;
+    }
+  }
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  /* v4에서 바뀐 preflight 기본값을 v3와 같게 되돌린다: placeholder 색(v4는 현재 글자색 50%), 버튼 커서(v4는 default) */
+  input::placeholder,
+  textarea::placeholder {
+    opacity: 1;
+    color: var(--color-gray-400);
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@utility layout-header-title {
+  @apply absolute left-1/2 -translate-x-1/2;
+}
+
+@utility input-otp-override {
+  /* input-otp width, clip-path 덮어쓰기 */
+  width: 100% !important;
+  clip-path: none !important;
+}
+
+@utility hide-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and 엣지 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+
+@utility shadow-timetable {
+  box-shadow: 0px 0px 0px 1px #dee1e6;
+}
+
+@utility shadow-nav {
+  box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, 0.06);
+}
+
+@utility custom-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@utility show-more {
+  float: right;
+  display: flex;
+  align-items: flex-end;
+  height: 40px;
+  margin-right: 10px;
+  shape-outside: inset(calc(100% - 19px) 0 0 0);
+  color: var(--gray-500);
+}
+
+@utility mypage-box-shadow {
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.06);
+}
+
+@utility calendar-shadow {
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.04);
+}
+
+@utility policy-container {
+  @apply whitespace-pre-wrap break-keep px-7 py-10;
+
+  & h2 {
+    @apply text-[22px]/[130%] font-bold;
+  }
+
+  & h3 {
+    @apply text-[14px]/[150%] font-semibold;
+  }
+
+  & p {
+    @apply text-[14px]/[150%] font-normal leading-[21px];
+  }
+
+  & section {
+    @apply mt-12 flex flex-col gap-6;
+  }
+
+  & ol {
+    @apply list-decimal pl-7;
+  }
+
+  & ul {
+    @apply list-disc pl-7;
+  }
+
+  & li {
+    @apply text-[13px]/[150%] font-normal;
+  }
+
+  & u {
+    @apply underline underline-offset-4;
+  }
+}
 
 @layer base {
   :root {
@@ -185,97 +455,5 @@
   input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
-}
-
-@layer utilities {
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
-
-  .layout-header-title {
-    @apply absolute left-1/2 -translate-x-1/2;
-  }
-
-  /* input-otp width, clip-path 덮어쓰기 */
-  .input-otp-override {
-    width: 100% !important;
-    clip-path: none !important;
-  }
-
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .hide-scrollbar {
-    -ms-overflow-style: none; /* IE and 엣지 */
-    scrollbar-width: none; /* 파이어폭스 */
-  }
-
-  .shadow-timetable {
-    box-shadow: 0px 0px 0px 1px #dee1e6;
-  }
-
-  .shadow-nav {
-    box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, 0.06);
-  }
-
-  .custom-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .show-more {
-    float: right;
-    display: flex;
-    align-items: flex-end;
-    height: 40px;
-    margin-right: 10px;
-    shape-outside: inset(calc(100% - 19px) 0 0 0);
-    color: var(--gray-500);
-  }
-  .mypage-box-shadow {
-    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.06);
-  }
-
-  .calendar-shadow {
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.04);
-  }
-
-  .policy-container {
-    @apply whitespace-pre-wrap break-keep px-7 py-10;
-  }
-
-  .policy-container h2 {
-    @apply text-[22px]/[130%] font-bold;
-  }
-
-  .policy-container h3 {
-    @apply text-[14px]/[150%] font-semibold;
-  }
-
-  .policy-container p {
-    @apply text-[14px]/[150%] font-normal leading-[21px];
-  }
-
-  .policy-container section {
-    @apply mt-12 flex flex-col gap-6;
-  }
-
-  .policy-container ol {
-    @apply list-decimal pl-7;
-  }
-
-  .policy-container ul {
-    @apply list-disc pl-7;
-  }
-
-  .policy-container li {
-    @apply text-[13px]/[150%] font-normal;
-  }
-
-  .policy-container u {
-    @apply underline underline-offset-4;
   }
 }
