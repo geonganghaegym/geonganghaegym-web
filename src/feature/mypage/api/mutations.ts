@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { authApi } from '@/entity/auth';
+import { auth, authApi } from '@/entity/auth';
 import { BaseError, BaseResponse } from '@/shared/api';
 import {
   resumeNativePushRegistration,
@@ -69,11 +69,13 @@ export const useLogOutMutation = () => {
       await suspendNativePushRegistration();
       try {
         // 이 브라우저의 FCM 토큰만 지우도록 함께 보낸다. 없으면 서버가 회원의 모든 기기 토큰을 지운다
-        const fcmToken = localStorage.getItem('serviceWorkerRegistration');
-        const result = await authApi.post<BaseResponse<boolean>>(
-          `/api/v1/members/logout`,
-          fcmToken ? { fcmToken } : undefined
-        );
+        const fcmToken = localStorage.getItem('serviceWorkerRegistration') ?? undefined;
+        // 이 기기의 갱신 토큰만 폐기한다. 같은 계정으로 로그인한 다른 기기는 로그인이 유지된다
+        const refreshToken = auth().tokens?.refreshToken;
+        const result = await authApi.post<BaseResponse<boolean>>(`/api/v1/members/logout`, {
+          fcmToken,
+          refreshToken,
+        });
         return result.data;
       } catch (error) {
         resumeNativePushRegistration();
