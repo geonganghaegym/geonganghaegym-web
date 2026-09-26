@@ -56,14 +56,9 @@ export const TrainerMyPage = () => {
             <p className={cn(Typography.BODY_1)}>고객센터</p>
             <IconArrowRightSmall stroke={'var(--gray-400)'} />
           </Link>
-          <div className='flex justify-between bg-white px-7 py-[15px]'>
-            <p className={cn(Typography.BODY_1)}>앱 버전</p>
-            <span className={cn(Typography.BODY_1, 'text-gray-500')}>최신 버전</span>
-          </div>
         </section>
 
         <footer className='flex flex-col items-start gap-4 bg-transparent p-7'>
-          <span className={cn(Typography.BODY_2, 'text-gray-500')}>앱 버전 0.0</span>
           <Link
             href={'#'}
             className={cn(Typography.BODY_2, 'border-b border-gray-300 text-gray-500')}>

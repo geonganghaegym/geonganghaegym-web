@@ -8,7 +8,13 @@ export {
   useSignUpMutation,
   useSocialSignInMutation,
 } from './api/mutations';
-export { getBaseRedirectUri, getSocialAuthUrl } from './consts';
+export {
+  COMPLIMENTARY_STUDENT_USER_ID,
+  COMPLIMENTARY_TRAINER_USER_ID,
+  getBaseRedirectUri,
+  getSocialAuthUrl,
+  isComplimentaryAccount,
+} from './consts';
 export { auth, useAuthAction, useAuthSelector } from './model/store';
 export type {
   LowercaseMemberType,
