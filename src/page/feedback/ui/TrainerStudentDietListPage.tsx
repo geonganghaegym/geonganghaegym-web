@@ -117,7 +117,7 @@ export const TrainerStudentDietListPage = ({ memberId }: Props) => {
           <IconBack />
         </button>
         <h2 className={cn(Typography.HEADING_4_SEMIBOLD, 'layout-header-title')}>
-          {name ? name : memberInfo?.name}님 식단
+          {(name || memberInfo?.name) && `${name || memberInfo?.name}님 식단`}
         </h2>
       </Layout.Header>
       <Layout.Contents className='bg-gray-100'>

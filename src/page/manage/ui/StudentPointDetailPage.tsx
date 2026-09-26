@@ -70,7 +70,7 @@ export const StudentPointDetailPage = ({ memberId }: Props) => {
           <IconClose width={14} height={14} />
         </Link>
         <h2 className={cn(Typography.HEADING_4_SEMIBOLD, 'layout-header-title')}>
-          {`${memberInfo?.name}님 포인트`}
+          {memberInfo?.name && `${memberInfo.name}님 포인트`}
         </h2>
       </Layout.Header>
       <Layout.Contents>

@@ -168,7 +168,7 @@ export const StudentCourseDetailPage = ({ memberId }: Props) => {
           <IconBack />
         </button>
         <h2 className={cn(Typography.HEADING_4_SEMIBOLD, 'layout-header-title')}>
-          {memberInfo?.name}님 수강권
+          {memberInfo?.name && `${memberInfo.name}님 수강권`}
         </h2>
 
         {historyData?.pages[0]?.mainData.course?.totalLessonCnt ===
