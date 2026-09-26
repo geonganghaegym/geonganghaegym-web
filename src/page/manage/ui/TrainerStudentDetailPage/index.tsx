@@ -169,7 +169,7 @@ const TrainerStudentDetailPage = ({ memberId }: Props) => {
                           )}>
                           {isOpen ? (
                             <IconArrowDown
-                              widht={14}
+                              width={14}
                               height={14}
                               className='rotate-180'
                             />
@@ -188,7 +188,7 @@ const TrainerStudentDetailPage = ({ memberId }: Props) => {
                                   {memberInfo?.point?.monthPoint}
                                 </span>
                               </p>
-                              <IconArrowDown widht={14} height={14} />
+                              <IconArrowDown width={14} height={14} />
                             </>
                           )}
                         </div>

@@ -170,7 +170,7 @@ export const StudentHomePage = () => {
                             )}>
                             {isOpen ? (
                               <IconArrowDown
-                                widht={14}
+                                width={14}
                                 height={14}
                                 className='rotate-180'
                               />
@@ -189,7 +189,7 @@ export const StudentHomePage = () => {
                                     {data?.point.monthPoint}
                                   </span>
                                 </p>
-                                <IconArrowDown widht={14} height={14} />
+                                <IconArrowDown width={14} height={14} />
                               </>
                             )}
                           </div>
