@@ -293,7 +293,7 @@ export const TrainerHomePage = () => {
                     <DialogTrigger asChild>
                       <Button variant='secondary'>수강권 지급</Button>
                     </DialogTrigger>
-                    <DialogContent className='flex w-[320px] flex-col rounded-md bg-white px-7 py-8'>
+                    <DialogContent className='flex w-[calc(100%-40px)] max-w-[320px] flex-col rounded-md bg-white px-7 py-8'>
                       <h3 className={cn(Typography.HEADING_4_BOLD)}>
                         {item.name}님에게 1회 수강권 지급
                       </h3>

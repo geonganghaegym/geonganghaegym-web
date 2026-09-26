@@ -182,7 +182,7 @@ const DayOfWeekRow = ({ startDate, flatSchedules }: Props) => {
         );
       })}
       <Dialog open={confirm !== null}>
-        <DialogContent className='w-[320px] rounded-md p-7'>
+        <DialogContent className='w-[calc(100%-40px)] max-w-[320px] rounded-md p-7'>
           <h3
             className={cn(
               Typography.TITLE_1_BOLD

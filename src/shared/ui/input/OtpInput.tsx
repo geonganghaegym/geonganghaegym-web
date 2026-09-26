@@ -30,7 +30,7 @@ const InputOTPGroup = forwardRef<ElementRef<'div'>, ComponentPropsWithoutRef<'di
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn('flex w-[320px] items-center justify-between', className)}
+      className={cn('flex w-full max-w-[320px] items-center justify-between', className)}
       {...props}
     />
   )

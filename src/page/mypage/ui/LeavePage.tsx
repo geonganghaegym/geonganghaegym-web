@@ -90,7 +90,7 @@ const LeavePage = () => {
               className='diabled:text-gray-400 w-full rounded-md border border-point py-5 text-point disabled:border-gray-300 disabled:text-gray-400'>
               계정 삭제하기
             </DialogTrigger>
-            <DialogContent className='flex w-[320px] flex-col rounded-md bg-white p-7'>
+            <DialogContent className='flex w-[calc(100%-40px)] max-w-[320px] flex-col rounded-md bg-white p-7'>
               <h3 className={cn(Typography.TITLE_1_BOLD)}>정말로 탈퇴하시겠어요?</h3>
               <p className={cn(Typography.BODY_2, 'mt-4')}>
                 건강해짐 계정을 삭제하면 회원님의 수강권, 운동 기록, 식단 등 모든 정보가

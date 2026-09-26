@@ -57,7 +57,7 @@ export const StudentMyPage = () => {
         )}
 
         <div className='bg-white py-6 pb-9'>
-          <article className='mypage-box-shadow m-auto flex w-[320px] items-center rounded-lg bg-white'>
+          <article className='mypage-box-shadow m-auto flex w-[calc(100%-40px)] max-w-[320px] items-center rounded-lg bg-white'>
             <Link href='/student/log' className='py-5 pl-8 pr-9'>
               <div className='flex flex-col items-center justify-center gap-y-5'>
                 <IconClassLog />

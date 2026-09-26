@@ -86,7 +86,7 @@ const CompletedSheet = ({ schedule }: { schedule: FlatSchedule }) => {
 
   if (confirm) {
     return (
-      <DialogContent className='flex w-[320px] flex-col rounded-md bg-white p-7 text-center'>
+      <DialogContent className='flex w-[calc(100%-40px)] max-w-[320px] flex-col rounded-md bg-white p-7 text-center'>
         <h3 className={cn(Typography.TITLE_1_SEMIBOLD)}>수업을 취소하시겠습니까?</h3>
         <div className='mt-8 flex gap-3'>
           <DialogClose className='w-full rounded-md bg-gray-100 py-[13px] text-gray-600'>
