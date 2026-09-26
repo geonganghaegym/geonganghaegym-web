@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
+import { redirect, useRouter, useSearchParams } from 'next/navigation';
 
 import { SignInForm } from '@/feature/auth';
 import { IconBack, IconLogo } from '@/shared/assets';
@@ -16,7 +16,8 @@ export const SignInPage = () => {
   const memberType = params?.get('type');
 
   if (memberType !== 'trainer' && memberType !== 'student') {
-    throw new Error('잘못된 접근입니다.');
+    // 역할 선택 없이 들어오면 역할을 고르는 첫 화면으로 보낸다
+    redirect('/');
   }
 
   const title = memberType === 'student' ? '회원 로그인' : '트레이너 로그인';
