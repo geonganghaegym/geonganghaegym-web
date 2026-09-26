@@ -23,3 +23,13 @@ Recent commits use conventional prefixes with short Korean summaries, for exampl
 
 ## Configuration Tips
 Keep secrets in local `.env` files only. Common variables include `NEXT_PUBLIC_AUTH_URL`, `NEXT_PUBLIC_WEB_URI`, social login client IDs, `NEXT_PUBLIC_KAKAO_API_KEY`, and `NEXT_PUBLIC_API_MOCKING`.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
