@@ -37,9 +37,9 @@ const WeeklyTimetable = ({
   );
 
   return (
-    <div className='mt-7 flex h-full w-screen max-w-[var(--max-width)] flex-1 overflow-hidden'>
+    <div className='mt-7 flex h-full w-screen max-w-(--max-width) flex-1 overflow-hidden'>
       <div className='hide-scrollbar relative ml-7 flex-1 overflow-auto'>
-        <div className='w-fit pb-[100px] pr-8'>
+        <div className='mr-7 pb-[100px]'>
           <DayOfWeekRow startDate={startDate} flatSchedules={flatSchedules} />
           <div className='relative flex'>
             <div className='bg-wthie sticky left-0 z-10 w-[21px] text-center'>
@@ -55,7 +55,7 @@ const WeeklyTimetable = ({
               ))}
             </div>
             {dayOfWeekAxis.map((_, i) => (
-              <div key={i} className='w-[64px] flex-1'>
+              <div key={i} className='min-w-0 flex-1'>
                 {hourAxis.map((_, j) => (
                   <div
                     key={j}
@@ -63,7 +63,7 @@ const WeeklyTimetable = ({
                 ))}
               </div>
             ))}
-            <div className='absolute left-[21px] top-0 z-0 h-full w-[calc(64*7px)]'>
+            <div className='absolute left-[21px] right-0 top-0 z-0 h-full'>
               {flatSchedules.map((schedule) => {
                 return <ScheduleItem key={schedule.scheduleId} schedule={schedule} />;
               })}

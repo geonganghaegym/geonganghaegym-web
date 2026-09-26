@@ -1,6 +1,9 @@
 name: build-and-deploy
 on:
-  push:
+  # frontend-ci(테스트·빌드)가 main push에서 성공했을 때만 배포한다
+  workflow_run:
+    workflows: [frontend-ci]
+    types: [completed]
     branches: [main]
 
 permissions:
@@ -13,11 +16,14 @@ env:
 
 jobs:
   build-push:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
     runs-on: ubuntu-latest
     outputs:
       tag: ${{ steps.tag.outputs.value }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
 
       - id: tag
         run: echo "value=sha-$(git rev-parse --short=12 HEAD)" >> $GITHUB_OUTPUT
@@ -39,7 +45,6 @@ jobs:
             ${{ env.IMAGE }}:latest
           build-args: |
             NEXT_PUBLIC_WEB_URI=${{ vars.NEXT_PUBLIC_WEB_URI }}
-            NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }}
             NEXT_PUBLIC_AUTH_URL=${{ vars.NEXT_PUBLIC_AUTH_URL }}
             INTERNAL_API_URL=${{ vars.INTERNAL_API_URL }}
             NEXT_PUBLIC_KAKAO_CLIENT_ID=${{ vars.NEXT_PUBLIC_KAKAO_CLIENT_ID }}

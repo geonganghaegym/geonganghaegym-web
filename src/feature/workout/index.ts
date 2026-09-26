@@ -23,7 +23,6 @@ export {
   useWorkoutCommentContext,
   WorkoutCommentContext,
 } from './hook/useComment';
-export { useImages as useWorkoutImages } from './hook/useImages';
 export type {
   ComplexExercise,
   Exercise,

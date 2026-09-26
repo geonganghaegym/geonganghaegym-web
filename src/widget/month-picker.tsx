@@ -117,7 +117,7 @@ const MonthPicker = ({
         </SheetTrigger>
         <SheetContent
           side='bottom'
-          className={cn('mx-auto flex max-w-[var(--max-width)] flex-col gap-7')}>
+          className={cn('mx-auto flex max-w-(--max-width) flex-col gap-7')}>
           <MonthlyCalendar date={date} onChangeDate={onChangeDate} />
         </SheetContent>
       </Sheet>

@@ -1,6 +1,8 @@
 'use client';
 
 import 'dayjs/locale/ko';
+
+import { hasNativePushBridge } from '@/shared/lib/native-push';
 dayjs.locale('ko');
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat);
@@ -89,6 +91,7 @@ export const StudentHomePage = () => {
   };
 
   const onMessageFCM = async () => {
+    if (hasNativePushBridge()) return;
     //서비스워커의 토큰은 한번 등록하면 안바뀜
     if (!('serviceWorker' in navigator && 'Notification' in window)) return;
     // 알림을 거부했으면 토큰을 받을 수 없다

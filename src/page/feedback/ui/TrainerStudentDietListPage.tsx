@@ -147,9 +147,10 @@ export const TrainerStudentDietListPage = ({ memberId }: Props) => {
                       onClick={() => onClickDiet(diet.dietId)}>
                       <Card className='mb-5 w-full px-6 py-7'>
                         <CardHeader
-                          className={
-                            (Typography.TITLE_3, 'mb-4 text-left text-gray-600')
-                          }>
+                          className={cn(
+                            Typography.TITLE_3,
+                            'mb-4 text-left text-gray-600'
+                          )}>
                           {date === todayValue ? '오늘' : date}
                         </CardHeader>
                         <CardContent>
@@ -179,13 +180,10 @@ export const TrainerStudentDietListPage = ({ memberId }: Props) => {
                                   {!meal.fast && meal.dietFile?.fileUrl && (
                                     <div className='h-[88px] w-full'>
                                       <img
-                                        src={buildDisplayImageUrl(
-                                          meal.dietFile.fileUrl,
-                                          {
-                                            w: 400,
-                                            q: 90,
-                                          }
-                                        )}
+                                        src={buildDisplayImageUrl(meal.dietFile.fileUrl, {
+                                          w: 400,
+                                          q: 90,
+                                        })}
                                         alt={`${meal.type} image`}
                                         className='custom-image rounded-md'
                                       />

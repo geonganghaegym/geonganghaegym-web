@@ -33,7 +33,7 @@ const TabsTrigger = forwardRef<
     ref={ref}
     className={cn(
       Typography.TITLE_1_BOLD,
-      'inline-flex w-full items-center justify-center whitespace-nowrap pb-5 text-gray-500 shadow-none outline-none ring-0 ring-offset-0 transition-all',
+      'inline-flex w-full items-center justify-center whitespace-nowrap pb-5 text-gray-500 shadow-none outline-hidden ring-0 ring-offset-0 transition-all',
       'data-[state=active]:border-b-2 data-[state=active]:border-gray-800 data-[state=active]:text-black',
       'disabled:pointer-events-none disabled:opacity-50',
       className
@@ -50,7 +50,7 @@ const TabsContent = forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      'mt-2 ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
       className
     )}
     {...props}

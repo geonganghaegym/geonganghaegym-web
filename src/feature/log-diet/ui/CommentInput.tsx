@@ -99,7 +99,7 @@ const CommentInput = () => {
             placeholder='댓글을 입력하세요.'
             value={text}
             onChange={changeText}
-            className='hide-scrollbar h-8 w-full resize-none appearance-none border-0 align-middle leading-4 outline-none outline outline-0 ring-0 '
+            className='hide-scrollbar h-8 w-full resize-none appearance-none border-0 align-middle leading-[16px] outline-hidden outline-solid outline-0 ring-0 '
           />
         </div>
         {text && (

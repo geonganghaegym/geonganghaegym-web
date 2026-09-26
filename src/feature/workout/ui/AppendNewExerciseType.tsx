@@ -119,7 +119,7 @@ const AppendNewExerciseType = ({
             </Button>
             <input
               type='text'
-              className='w-full bg-transparent px-5 outline-none ring-0'
+              className='w-full bg-transparent px-5 outline-hidden ring-0'
               onChange={(e) => setSearch(e.target.value)}
               placeholder='추가하고 싶은 운동을 검색해보세요'
             />

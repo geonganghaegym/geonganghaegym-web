@@ -35,7 +35,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { DateFormatter, DayProps } from 'react-day-picker';
+import { DayButton, DayButtonProps, Formatters } from 'react-day-picker';
 
 import { Layout } from '@/widget';
 
@@ -93,7 +93,7 @@ export const StudentSchedulePage = () => {
   const weekEnd = dayjs(date).endOf('week');
 
   const modifiers = {
-    hidden: (day: string | number | Date | dayjs.Dayjs | null | undefined) =>
+    weekHidden: (day: string | number | Date | dayjs.Dayjs | null | undefined) =>
       isToggle && !dayjs(day).isBetween(weekStart, weekEnd, null, '[]'),
   };
 
@@ -110,29 +110,24 @@ export const StudentSchedulePage = () => {
   };
 
   //예약한 날(블루닷)
-  const reservedDay = (props: DayProps) => {
-    const isreserved = reservedDates.some(
-      (reservedDate) =>
-        reservedDate.getDate() === props.date.getDate() &&
-        reservedDate.getMonth() === props.date.getMonth()
+  const reservedDay = (props: DayButtonProps) => {
+    const isreserved = reservedDates.some((reservedDate) =>
+      dayjs(reservedDate).isSame(props.day.date, 'day')
     );
 
     return (
-      <div className='day-cell'>
-        {props.date.getDate()}
-        {isreserved && <span className='reserved-indicator'></span>}
-      </div>
+      <DayButton {...props}>
+        <div className='day-cell'>
+          {props.children}
+          {isreserved && <span className='reserved-indicator'></span>}
+        </div>
+      </DayButton>
     );
   };
 
   //상단 날짜 형식 변경
-  const formatCaption: DateFormatter = (date, options) => {
-    return (
-      <>
-        {`${format(date, 'yyyy', { locale: options?.locale })}년`}{' '}
-        {format(date, 'LLLL', { locale: options?.locale })}
-      </>
-    );
+  const formatCaption: Formatters['formatCaption'] = (date, options) => {
+    return `${format(date, 'yyyy', { locale: options?.locale })}년 ${format(date, 'LLLL', { locale: options?.locale })}`;
   };
 
   const handleCloseNotification = () => {
@@ -169,7 +164,7 @@ export const StudentSchedulePage = () => {
             </TabsTrigger>
           </TabsList>
           <TabsContent value='classReservation' className='mt-0'>
-            <article className='calendar-shadow rounded-bl-lg rounded-br-lg bg-white'>
+            <article className='calendar-shadow rounded-br-lg rounded-bl-lg bg-white'>
               {scheduleListData?.scheduleNoticeStatus === 'ENABLED' && (
                 <div className='flex items-center justify-between bg-blue-50 px-7 py-5'>
                   <div className='flex items-center justify-center'>
@@ -194,26 +189,26 @@ export const StudentSchedulePage = () => {
                       ? 'animate-calendar-accordion-up fill-mode-forwards'
                       : 'animate-calendar-accordion-down fill-mode-forwards'
                     : '',
-                  'overflow-hidden px-7 pb-6 pt-8'
+                  'overflow-hidden px-7 pt-8 pb-6'
                 )}>
                 <Calendar
                   mode='single'
                   required
                   selected={date}
                   onSelect={setDate}
-                  fromDate={newStartOfWeek} //오늘날짜부터 나오게
-                  toDate={newEndOfWeek}
+                  disabled={[{ before: newStartOfWeek }, { after: newEndOfWeek }]} //예약 가능한 주만 선택
+                  hideNavigation
                   month={currentMonth}
                   onDayClick={handleMonthChange}
                   onMonthChange={handleMonthChange}
                   formatters={{ formatCaption }}
                   modifiersStyles={{
-                    hidden: { display: 'none' }, // 주간 표시할때 비활성화된 날짜 숨기기
+                    weekHidden: { display: 'none' }, // 주간 표시할때 비활성화된 날짜 숨기기
                   }}
                   fixedWeeks={true}
                   modifiers={{ ...modifiers, reserved: reservedDates }}
                   components={{
-                    DayContent: reservedDay, //예약한 날 표시(블루닷)
+                    DayButton: reservedDay, //예약한 날 표시(블루닷)
                   }}
                   isToggle={isToggle}
                 />

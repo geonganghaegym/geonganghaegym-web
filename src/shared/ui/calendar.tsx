@@ -26,51 +26,55 @@ function Calendar({
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      className={cn(className)}
+      className={cn('relative', className)}
       classNames={{
         months: 'flex flex-col space-y-4 sm:space-x-4 sm:space-y-0',
         month: 'space-y-4',
-        caption: 'flex justify-between pt-1 relative items-center',
+        month_caption: 'flex justify-between pt-1 relative items-center',
         caption_label: Typography.HEADING_4_BOLD,
-        nav: 'flex items-center justify-between w-[80px]',
-        nav_button: cn(
+        nav: 'absolute inset-x-0 top-1 z-10 flex items-center justify-between',
+        button_previous: cn(
           buttonVariants({ variant: 'outline' }),
-          'h-7 w-7 bg-transparent p-0 hover:opacity-100'
+          'w-[30px] h-[30px] bg-transparent p-0 opacity-100 hover:opacity-100 disabled:bg-transparent'
         ),
-        nav_button_previous:
-          'absolute left-1 w-[30px] h-[30px] disabled:bg-transparent opacity-100',
-        nav_button_next:
-          'absolute right-1 w-[30px] h-[30px] disabled:bg-transparent opacity-100',
-        table: 'w-full border-collapse space-y-1 h-[200px]',
-        head_row: 'flex justify-between items-center',
-        head_cell: cn(
+        button_next: cn(
+          buttonVariants({ variant: 'outline' }),
+          'w-[30px] h-[30px] bg-transparent p-0 opacity-100 hover:opacity-100 disabled:bg-transparent'
+        ),
+        month_grid: 'w-full border-collapse space-y-1 h-[200px]',
+        weekdays: 'flex justify-between items-center',
+        weekday: cn(
           Typography.BODY_2,
           'w-[40px] h-[40px] flex justify-center items-center text-muted-foreground rounded-md font-normal'
         ),
-        row: 'flex w-full justify-between items-center',
-        cell: 'text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-primary-500 [&:has([aria-selected])]:text-white [&:has([aria-selected])]:rounded-[50%] focus-within:relative focus-within:z-20',
-        day: cn(
+        week: 'flex w-full justify-between items-center',
+        day: 'text-center text-sm p-0 relative focus-within:relative focus-within:z-20',
+        day_button: cn(
           buttonVariants({ variant: 'ghost' }),
           Typography.TITLE_1_SEMIBOLD,
-          'w-[40px] h-[40px] p-0 aria-selected:opacity-100 rounded-full'
+          'rdp-day_button w-[40px] h-[40px] p-0 rounded-full'
         ),
-        day_range_end: 'day-range-end',
-        day_selected: 'bg-primary text-white',
-        day_today: 'bg-primary text-accent-foreground',
-        day_outside:
-          'day-outside text-muted-foreground opacity-50 aria-selected:text-muted-foreground aria-selected:opacity-30',
-        day_disabled: 'text-muted-foreground opacity-50 disabled:bg-transparent',
-        day_range_middle: 'aria-selected:bg-primary aria-selected:text-accent-foreground',
-        day_hidden: 'invisible',
+        // v8은 상태 클래스를 버튼에, v10은 셀(td)에 붙인다. v8 화면과 같게 버튼 스타일은 [&>button]으로 건다.
+        selected:
+          'bg-primary-500 text-white rounded-[50%] [&>button]:bg-primary [&>button]:text-white',
+        today: '[&>button]:bg-primary [&>button]:text-accent-foreground',
+        outside:
+          'day-outside [&>button]:text-muted-foreground [&>button]:opacity-50 aria-selected:[&>button]:text-muted-foreground aria-selected:[&>button]:opacity-30',
+        disabled:
+          '[&>button]:text-muted-foreground [&>button]:opacity-50 [&>button]:disabled:bg-transparent',
+        range_middle:
+          'aria-selected:[&>button]:bg-primary aria-selected:[&>button]:text-accent-foreground',
+        range_end: 'day-range-end',
+        hidden: 'invisible',
         ...classNames,
       }}
       components={{
-        IconLeft: () => (
-          <ChevronLeft className={cn(isToggle && 'hidden', 'h-[30px] w-[30px]')} />
-        ),
-        IconRight: () => (
-          <ChevronRight className={cn(isToggle && 'hidden', 'h-[30px] w-[30px]')} />
-        ),
+        Chevron: ({ orientation }: { orientation?: string }) =>
+          orientation === 'left' ? (
+            <ChevronLeft className={cn(isToggle && 'hidden', 'h-[30px] w-[30px]')} />
+          ) : (
+            <ChevronRight className={cn(isToggle && 'hidden', 'h-[30px] w-[30px]')} />
+          ),
       }}
       locale={ko}
       weekStartsOn={0}

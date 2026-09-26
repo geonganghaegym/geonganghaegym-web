@@ -259,7 +259,7 @@ export const StudentCourseDetailPage = ({ memberId }: Props) => {
                     </CourseSheetContent>
                   </CourseSheet>
 
-                  <span className='h-[30px] w-[1px] bg-gray-200'></span>
+                  <span className='h-[30px] w-px bg-gray-200'></span>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
                       <Button
@@ -275,12 +275,12 @@ export const StudentCourseDetailPage = ({ memberId }: Props) => {
                         </AlertDialogTitle>
                       </AlertDialogHeader>
                       <AlertDialogFooter className='grid w-full grid-cols-2 items-center justify-center gap-3'>
-                        <AlertDialogCancel className='mt-0 h-[48px] rounded-md bg-gray-100 text-base font-normal text-gray-600'>
+                        <AlertDialogCancel className='mt-0 h-12 rounded-md bg-gray-100 text-base font-normal text-gray-600'>
                           아니요
                         </AlertDialogCancel>
                         <AlertDialogAction
                           asChild
-                          className='mt-0 h-[48px] rounded-md bg-point text-base font-normal text-white'>
+                          className='mt-0 h-12 rounded-md bg-point text-base font-normal text-white'>
                           <Button variant='ghost' onClick={deleteStudentCourse}>
                             예
                           </Button>

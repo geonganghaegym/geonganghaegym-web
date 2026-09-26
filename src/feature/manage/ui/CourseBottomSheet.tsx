@@ -101,7 +101,7 @@ export const CourseSheetInput = ({
         value={courseInput}
         onChange={changeCourseInput}
         className={cn(
-          'border-b-1 w-[100px] border-b border-solid border-y-gray-400 py-[2px] text-center text-[40px] font-bold leading-[130%] text-black focus:border-y-primary-500',
+          'border-b w-[100px] border-b border-solid border-y-gray-400 py-[2px] text-center text-[40px] font-bold leading-[130%] text-black focus:border-y-primary-500',
           courseInputError && 'focus:border-y-red-500'
         )}
       />

@@ -5,7 +5,7 @@ import type { Metadata, Viewport } from 'next';
 import Head from 'next/head';
 import { Suspense } from 'react';
 
-import { KakaoScript, MSWComponent, QueryProvider, ToastProvider } from './_providers';
+import { KakaoScript, QueryProvider, ToastProvider } from './_providers';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -43,7 +43,6 @@ export default function RootLayout({
       <KakaoScript />
       <body>
         <QueryProvider>
-          <MSWComponent />
           <Suspense>{children}</Suspense>
         </QueryProvider>
         <ToastProvider />

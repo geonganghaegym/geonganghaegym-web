@@ -1,12 +1,6 @@
-import { useQueryClient } from '@tanstack/react-query';
-import {
-  ChangeEvent,
-  createContext,
-  MutableRefObject,
-  useCallback,
-  useContext,
-  useState,
-} from 'react';
+import { createContext, MutableRefObject, useContext } from 'react';
+
+import { useCommentEditor } from '@/shared/hooks';
 
 import { ContentType } from '../model/types';
 
@@ -24,62 +18,18 @@ const useCommentContext = () => {
   return context;
 };
 
-type CommentTarget = {
-  comment: ContentType;
-  isReply: boolean;
-  mode: 'create' | 'edit';
-} | null;
-
 interface Props {
   dietId: number;
   ref: MutableRefObject<HTMLTextAreaElement | null>;
 }
 
 const useComment = ({ dietId, ref }: Props) => {
-  const queryClient = useQueryClient();
-
-  const [text, setText] = useState('');
-  const [target, setTarget] = useState<CommentTarget>(null);
-
-  const refreshComments = async () => {
-    await queryClient.refetchQueries({
-      queryKey: ['dietCommentList', dietId],
-    });
-  };
-
-  const changeText = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value);
-  }, []);
-
-  const clearText = useCallback(() => {
-    setText('');
-  }, []);
-
-  const focusOnInput = useCallback(() => {
-    ref?.current?.focus();
-  }, [ref]);
-
-  const changeTarget = useCallback(
-    (target: CommentTarget) => {
-      target?.mode === 'create' ? clearText() : setText(target?.comment.content ?? '');
-
-      setTarget(target);
-      focusOnInput();
-    },
-    [clearText, focusOnInput]
-  );
-
-  return {
-    dietId,
-    text,
-    changeText,
-    clearText,
+  const comment = useCommentEditor<ContentType>({
     ref,
-    focusOnInput,
-    target,
-    changeTarget,
-    refreshComments,
-  };
+    queryKey: ['dietCommentList', dietId],
+  });
+
+  return { dietId, ...comment };
 };
 
 export { CommentContext, useComment, useCommentContext };

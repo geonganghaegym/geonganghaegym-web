@@ -27,13 +27,6 @@ export const SignInForm = ({ memberType }: { memberType: 'trainer' | 'student' }
       {
         onSuccess: ({ data }) => {
           setUserInfo(data);
-          try {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-            window.flutter_inappwebview.callHandler('Channel', data.memberId);
-          } catch (error) {
-            // eslint-disable-next-line no-console
-            console.error(error);
-          }
           router.replace(`/${data.memberType?.toLowerCase()}`);
         },
         onError: (error) => {

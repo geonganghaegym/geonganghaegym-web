@@ -113,7 +113,7 @@ const StudentAlarmPage = () => {
               </p>
             </TabsTrigger>
           </TabsList>
-          <TabsContent value='SCHEDULE' className='mt-0 flex-grow'>
+          <TabsContent value='SCHEDULE' className='mt-0 grow'>
             {isPending && (
               <div className='flex-center h-[500px] w-full'>
                 <Image src='/images/loading.gif' width={20} height={20} alt='loading' />
@@ -145,7 +145,7 @@ const StudentAlarmPage = () => {
               </div>
             )}
           </TabsContent>
-          <TabsContent value='COMMUNITY' className='mt-0 flex-grow'>
+          <TabsContent value='COMMUNITY' className='mt-0 grow'>
             {isPending && (
               <div className='flex-center h-[500px] w-full'>
                 <Image src='/images/loading.gif' width={20} height={20} alt='loading' />

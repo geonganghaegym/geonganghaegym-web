@@ -1,10 +1,11 @@
 import { CommunityDetailPage } from '@/page/workout';
 
 interface Props {
-  params: { workoutHistoryId: number };
+  params: Promise<{ workoutHistoryId: number }>;
 }
 
-const Page = ({ params }: Props) => {
+const Page = async (props: Props) => {
+  const params = await props.params;
   return <CommunityDetailPage workoutHistoryId={params.workoutHistoryId} />;
 };
 

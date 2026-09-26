@@ -2,6 +2,10 @@ import { useMutation } from '@tanstack/react-query';
 
 import { authApi } from '@/entity/auth';
 import { BaseError, BaseResponse } from '@/shared/api';
+import {
+  resumeNativePushRegistration,
+  suspendNativePushRegistration,
+} from '@/shared/lib/native-push';
 
 interface ChangeEmailRequest {
   email: string;
@@ -62,13 +66,19 @@ export const useDeleteProfileImageMutation = () => {
 export const useLogOutMutation = () => {
   return useMutation<BaseResponse<boolean>, BaseError, undefined>({
     mutationFn: async () => {
-      // 이 브라우저의 FCM 토큰만 지우도록 함께 보낸다. 없으면 서버가 회원의 모든 기기 토큰을 지운다
-      const fcmToken = localStorage.getItem('serviceWorkerRegistration');
-      const result = await authApi.post<BaseResponse<boolean>>(
-        `/api/v1/members/logout`,
-        fcmToken ? { fcmToken } : undefined
-      );
-      return result.data;
+      await suspendNativePushRegistration();
+      try {
+        // 이 브라우저의 FCM 토큰만 지우도록 함께 보낸다. 없으면 서버가 회원의 모든 기기 토큰을 지운다
+        const fcmToken = localStorage.getItem('serviceWorkerRegistration');
+        const result = await authApi.post<BaseResponse<boolean>>(
+          `/api/v1/members/logout`,
+          fcmToken ? { fcmToken } : undefined
+        );
+        return result.data;
+      } catch (error) {
+        resumeNativePushRegistration();
+        throw error;
+      }
     },
   });
 };

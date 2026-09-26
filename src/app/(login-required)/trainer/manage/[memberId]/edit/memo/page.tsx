@@ -1,8 +1,9 @@
 import { StudentEditMemo } from '@/page/manage/ui/StudentEditMemo';
 interface Props {
-  params: { memberId: number };
+  params: Promise<{ memberId: number }>;
 }
-const Page = ({ params }: Props) => {
+const Page = async (props: Props) => {
+  const params = await props.params;
   return <StudentEditMemo memberId={params.memberId} />;
 };
 

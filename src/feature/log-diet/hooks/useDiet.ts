@@ -26,6 +26,12 @@ const useDietContext = () => {
 
 const dietOrder = ['breakfast', 'lunch', 'dinner'];
 
+const revokeIfBlobUrl = (fileUrl?: string | null) => {
+  if (fileUrl?.startsWith('blob:')) {
+    URL.revokeObjectURL(fileUrl);
+  }
+};
+
 const useDiet = () => {
   const { errorToast } = useToast();
 
@@ -54,6 +60,8 @@ const useDiet = () => {
 
     setImages((prevImages) => {
       const filteredImages = prevImages.filter((image) => image.type !== type);
+      const replacedImage = prevImages.find((image) => image.type === type);
+      revokeIfBlobUrl(replacedImage?.fileUrl);
       const newImages = [...filteredImages, ...newPreviewImages];
       setSortedImages(newImages);
       return newImages;
@@ -79,6 +87,8 @@ const useDiet = () => {
 
               setImages((prev) => {
                 const filteredImages = prev.filter((image) => image.type !== type);
+                const previewImage = prev.find((image) => image.type === type);
+                revokeIfBlobUrl(previewImage?.fileUrl);
 
                 const newImages = [...filteredImages, ...imagesWithType];
                 setSortedImages(newImages);
@@ -99,6 +109,7 @@ const useDiet = () => {
     setImages((prev) => {
       const newImages = prev.map((image) => {
         if (image.type === type) {
+          revokeIfBlobUrl(image.fileUrl);
           return { ...image, fileUrl: null, fast: true };
         }
         return image;
@@ -113,6 +124,7 @@ const useDiet = () => {
     setImages((prev) => {
       const newImages = prev.map((image) => {
         if (image.type === type) {
+          revokeIfBlobUrl(image.fileUrl);
           return { ...image, fileUrl: null, fast: false };
         }
         return image;
@@ -126,6 +138,7 @@ const useDiet = () => {
     if (images.length > 0) {
       const res = images.map((image) => {
         if (image.type === type) {
+          revokeIfBlobUrl(image.fileUrl);
           return { ...image, fileUrl: null };
         }
         return image;

@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 declare module '*.svg' {
-  import React from 'react';
+  import type { FC, SVGProps } from 'react';
 
-  const svg: react.fc<react.svgprops<svgsvgelement>>;
-  svg;
+  const svg: FC<SVGProps<SVGSVGElement>>;
 
   export default svg;
 }

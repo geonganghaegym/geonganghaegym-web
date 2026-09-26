@@ -73,4 +73,3 @@ const TrainerWorkoutDetailPage = ({ workoutHistoryId, memberId }: Props) => {
 };
 
 export { TrainerWorkoutDetailPage };
-WorkoutCommentsWrapper;

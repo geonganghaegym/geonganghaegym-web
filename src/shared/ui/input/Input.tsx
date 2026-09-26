@@ -7,7 +7,7 @@ export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
     return (
       <input
         className={cn(
-          'outline-none autofill:shadow-[inset_0_0_0px_1000px_rgb(255,255,255)]',
+          'outline-hidden autofill:shadow-[inset_0_0_0px_1000px_rgb(255,255,255)]',
           className
         )}
         type={type}

@@ -4,21 +4,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-건강해짐 (To Be Healthy) — a fitness center schedule management PWA for trainers and members (students). Built with Next.js 14 App Router.
+건강해짐 (To Be Healthy) — a fitness center schedule management PWA for trainers and members (students). Built with Next.js 16 App Router (React 19, Turbopack, Node 24).
 
 ## Commands
 
 ```bash
 npm run dev          # Dev server on :3000
 npm run build        # Production build
-npm run lint         # ESLint (next lint)
+npm run lint         # ESLint 9 flat config (eslint.config.mjs) — `next lint`는 Next 16에서 제거됨
 npm run lint:style   # Stylelint on TSX files
 npm run type-check   # TypeScript check (tsconfig.prod.json)
 npm run test         # Jest tests
 npm run mock         # MSW Express mock server on :9090
 ```
 
-Pre-commit hooks (Husky + lint-staged) run ESLint, Prettier, Stylelint, and next lint automatically.
+Pre-commit hooks (Husky + lint-staged) run type-check, ESLint, Prettier, and Stylelint automatically.
 
 ## Architecture — FSD (Feature-Sliced Design)
 
@@ -45,7 +45,7 @@ Each feature/entity folder follows a consistent structure:
 
 **Two user roles**: `STUDENT` and `TRAINER` — stored in `memberType`. Routes are split under `(login-required)/student/` and `(login-required)/trainer/`. Many components render differently per role.
 
-**State management**: Zustand with persist (localStorage key: `auth-storage`) and devtools middleware. Use `useAuthSelector` for optimized re-renders with shallow equality.
+**State management**: Zustand 5 with persist (localStorage key: `auth-storage`) and devtools middleware (disabled in production). Use `useAuthSelector` for optimized re-renders with shallow equality.
 
 **Data fetching**: TanStack React Query v5 + Axios. Two Axios instances in `shared/api/baseApi.ts`:
 - `api` — no auth header (public endpoints)
@@ -61,7 +61,10 @@ Each feature/entity folder follows a consistent structure:
 
 ## Styling
 
-- Tailwind CSS with custom spacing scale (1=4px, 2=6px, 3=8px, 6=16px, 7=20px, 8=24px)
+- Tailwind CSS 4 — 설정은 `tailwind.config.js`가 아니라 `app/_styles/global.css`의 `@theme`에 있다. custom spacing scale (1=4px, 2=6px, 3=8px, 4=10px, 6=16px, 7=20px, 8=24px, 12=48px)
+  - **v4 함정**: 숫자 유틸리티가 전부 동적으로 생성된다. v3에서 스케일에 없어 무시되던 클래스(`h-35` 등)가 갑자기 적용되고, `leading-N`도 spacing 스케일을 따라 `leading-4`=10px가 된다 — 줄 높이는 `leading-[16px]`처럼 명시한다
+  - 유틸리티는 `@layer` 안에 있어 **레이어 밖 CSS(라이브러리 css, `react-calendar.css`)가 항상 이긴다**
+- 달력은 react-day-picker 10(`shared/ui/calendar.tsx`). v10은 상태 클래스(selected·today·disabled)를 버튼이 아닌 셀(td)에 붙인다 — 버튼 스타일은 `[&>button]:`로 건다
 - CSS variables for colors defined in `app/_styles/global.css` (e.g., `--primary-500`, `--gray-500`, `--point-color`)
 - Pretendard font (Korean-optimized)
 - Max layout width: 440px (mobile-first)

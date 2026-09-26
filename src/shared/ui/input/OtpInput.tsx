@@ -16,7 +16,7 @@ const InputOTP = forwardRef<
   <OTPInput
     ref={ref}
     containerClassName={cn(
-      'flex items-center gap-2 has-[:disabled]:opacity-50 h-[45px]',
+      'flex items-center gap-2 has-disabled:opacity-50 h-[45px]',
       containerClassName
     )}
     style={{ width: '100%' }}

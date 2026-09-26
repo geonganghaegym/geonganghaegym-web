@@ -1,8 +1,9 @@
 import { StudentEditNickname } from '@/page/manage/ui/StudentEditNickname';
 interface Props {
-  params: { memberId: number };
+  params: Promise<{ memberId: number }>;
 }
-const Page = ({ params }: Props) => {
+const Page = async (props: Props) => {
+  const params = await props.params;
   return <StudentEditNickname memberId={params.memberId} />;
 };
 

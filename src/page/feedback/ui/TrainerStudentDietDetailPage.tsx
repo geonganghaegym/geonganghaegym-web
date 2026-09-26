@@ -1,6 +1,4 @@
 'use client';
-/* eslint-disable @next/next/no-img-element */
-import { DialogTrigger } from '@radix-ui/react-dialog';
 import { useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import Link from 'next/link';
@@ -17,33 +15,19 @@ import {
   DietCommentContext,
   DietCommentInput,
   DietCommentList,
+  DietMealItem,
   useDietComment,
   useDietCommentListQuery,
 } from '@/feature/log-diet';
-import { IconBack, IconChat, IconCheck, IconLike, IconWhiteClose } from '@/shared/assets';
+import { IconBack, IconChat, IconLike } from '@/shared/assets';
 import { Typography } from '@/shared/mixin';
-import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  useToast,
-} from '@/shared/ui';
-import { buildDisplayImageUrl, cn } from '@/shared/utils';
+import { Button, Card, CardContent, CardHeader, useToast } from '@/shared/ui';
+import { cn } from '@/shared/utils';
 import { Layout } from '@/widget';
 
 const dietDay: MealType[] = ['breakfast', 'lunch', 'dinner'];
 
 const ITEMS_PER_PAGE = 20;
-
-const dietText = {
-  breakfast: '아침',
-  lunch: '점심',
-  dinner: '저녁',
-};
 
 interface Props {
   memberId: number;
@@ -125,89 +109,18 @@ export const TrainerStudentDietDetailPage = ({ memberId, dietId }: Props) => {
                 )}
                 <Card className='w-full p-0'>
                   <CardHeader
-                    className={
-                      (Typography.TITLE_3, 'mb-4 px-6 pt-7 text-left text-gray-600')
-                    }>
+                    className={cn(
+                      Typography.TITLE_3,
+                      'mb-4 px-6 pt-7 text-left text-gray-600'
+                    )}>
                     {dietDate === todayValue ? '오늘' : dietDate}
                   </CardHeader>
                   <CardContent>
                     <div className='px-6 pb-8'>
                       <article className='mb-6 flex justify-between'>
-                        {dietDay.map((mealType: MealType) => {
-                          const meal = dietData[mealType];
-                          return (
-                            <div
-                              className='flex w-[calc((100%-12px)/3)] flex-col items-center justify-between'
-                              key={mealType}>
-                              <div className='mb-1 w-full'>
-                                {meal.fast && (
-                                  <div
-                                    className={cn(
-                                      Typography.TITLE_2,
-                                      'flex h-[88px] w-full flex-col items-center justify-center rounded-md bg-gray-100 p-0 text-center text-gray-400'
-                                    )}>
-                                    <span className='mb-1'>
-                                      <IconCheck
-                                        fill={'var(--primary-500)'}
-                                        width={17}
-                                        height={17}
-                                      />
-                                    </span>
-                                    단식
-                                  </div>
-                                )}
-                                {!meal.fast && meal.dietFile?.fileUrl && (
-                                  <Dialog>
-                                    <DialogTrigger asChild>
-                                      <Button
-                                        variant='ghost'
-                                        className='h-[88px] w-full p-0'>
-                                        <img
-                                          src={buildDisplayImageUrl(
-                                            meal.dietFile.fileUrl,
-                                            {
-                                              w: 400,
-                                              q: 90,
-                                            }
-                                          )}
-                                          alt={meal.type}
-                                          className='custom-image rounded-md'
-                                        />
-                                      </Button>
-                                    </DialogTrigger>
-                                    <DialogContent className='block h-full gap-0 border-none bg-black p-0'>
-                                      <div className='relative flex h-[56px] w-full px-7 py-6'>
-                                        <DialogClose className='text-white'>
-                                          <IconWhiteClose stroke='white' />
-                                        </DialogClose>
-                                      </div>
-                                      <div className='flex h-[calc(100%-56px)] w-full items-center justify-center'>
-                                        <img
-                                          src={buildDisplayImageUrl(
-                                            meal.dietFile.fileUrl,
-                                            {
-                                              w: 1200,
-                                              q: 90,
-                                            }
-                                          )}
-                                          alt={meal.type}
-                                          className='max-w-screen h-full object-contain'
-                                        />
-                                      </div>
-                                    </DialogContent>
-                                  </Dialog>
-                                )}
-                                {!meal.fast && !meal.dietFile && (
-                                  <div className='h-[88px] w-full rounded-md bg-gray-100 p-0' />
-                                )}
-                              </div>
-                              <span
-                                className={cn(Typography.BODY_4_MEDIUM, 'text-gray-500')}>
-                                {dietText[meal.type]}
-                              </span>
-                            </div>
-                          );
-                        })}
+                        {dietDay.map((mealType: MealType) => (
+                          <DietMealItem key={mealType} meal={dietData[mealType]} />
+                        ))}
                       </article>
 
                       <div className='flex items-center justify-start'>

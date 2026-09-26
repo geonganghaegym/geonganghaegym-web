@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-`src/` follows Feature-Sliced Design on top of Next.js 14 App Router. `src/app` contains routes, route groups like `(login-required)` and `(login-unrequired)`, providers, global styles, and API routes. `src/page` composes screens, `src/widget` holds layout and shared page sections, `src/feature` contains user-facing business flows, `src/entity` defines domain modules, and `src/shared` stores reusable API clients, UI, hooks, utils, and assets. Static files, fonts, and PWA artifacts live in `public/`. MSW mocks live in `src/shared/lib/mocks/`.
+`src/` follows Feature-Sliced Design on top of Next.js 16 App Router. `src/app` contains routes, route groups like `(login-required)` and `(login-unrequired)`, providers, global styles, and API routes. `src/page` composes screens, `src/widget` holds layout and shared page sections, `src/feature` contains user-facing business flows, `src/entity` defines domain modules, and `src/shared` stores reusable API clients, UI, hooks, utils, and assets. Static files, fonts, the web manifest, and the Firebase messaging service worker live in `public/`. MSW mocks live in `src/shared/lib/mocks/`.
 
 ## Build, Test, and Development Commands
 `npm run dev` starts the local app on port 3000.  

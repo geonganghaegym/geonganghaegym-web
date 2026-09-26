@@ -82,7 +82,7 @@ const TrainerStudentDetailPage = ({ memberId }: Props) => {
                   )}>
                   {memberInfo.nickName && <p>{memberInfo.nickName}</p>}
                   {memberInfo.ranking !== 999 && memberInfo.nickName && (
-                    <div className='block h-[11px] w-[1px] bg-gray-300'></div>
+                    <div className='block h-[11px] w-px bg-gray-300'></div>
                   )}
                   {memberInfo.ranking !== 999 && (
                     <p>
@@ -102,7 +102,7 @@ const TrainerStudentDetailPage = ({ memberId }: Props) => {
                   </div>
                   <p className={Typography.HEADING_5}>예약 내역</p>
                 </Link>
-                <div className='h-11 w-[1px] bg-gray-100' />
+                <div className='h-11 w-px bg-gray-100' />
                 <Link
                   href={`/trainer/manage/${memberId}/edit/memo`}
                   className='flex flex-col items-center justify-between gap-y-3'>
@@ -111,7 +111,7 @@ const TrainerStudentDetailPage = ({ memberId }: Props) => {
                   </div>
                   <p className={Typography.HEADING_5}>회원 메모</p>
                 </Link>
-                <div className='h-11 w-[1px] bg-gray-100' />
+                <div className='h-11 w-px bg-gray-100' />
                 <Link
                   href={`/trainer/manage/${memberId}/log`}
                   className='flex flex-col items-center justify-between gap-y-3'>

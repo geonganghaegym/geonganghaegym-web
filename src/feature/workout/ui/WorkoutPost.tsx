@@ -5,9 +5,14 @@ import dayjs from 'dayjs';
 import { type Workout } from '@/feature/workout';
 import { IconChat, IconGroup, IconLike, IconLock } from '@/shared/assets';
 import { Typography } from '@/shared/mixin';
-import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  ImageSlide,
+} from '@/shared/ui';
 import { cn } from '@/shared/utils';
-import { ImageSlide } from '@/widget';
 
 import { ExercisePreview } from './ExerciseInfo';
 
@@ -34,7 +39,7 @@ const WorkoutPost = ({ workout }: { workout: Workout }) => {
         <p
           className={cn(
             Typography.BODY_3,
-            'mb-5 line-clamp-2 h-full overflow-ellipsis text-black'
+            'mb-5 line-clamp-2 h-full text-ellipsis text-black'
           )}>
           {content}
         </p>

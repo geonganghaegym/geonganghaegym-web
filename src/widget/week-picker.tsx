@@ -2,7 +2,7 @@
 
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { ActiveModifiers } from 'react-day-picker';
+import { Modifiers } from 'react-day-picker';
 
 import { IconArrowLeft, IconArrowRight, IconClose } from '@/shared/assets';
 import { Typography } from '@/shared/mixin';
@@ -27,7 +27,7 @@ const DailyCalendar = ({
   const [startOfWeek, setStartOfWeek] = useState<Date>(defaultStartDate);
   const [month, setMonth] = useState<Date>(defaultStartDate);
 
-  const onDayClick = (day: Date, modifiers: ActiveModifiers) => {
+  const onDayClick = (day: Date, modifiers: Modifiers) => {
     if (modifiers.outside) {
       setMonth(day);
     }
@@ -56,10 +56,19 @@ const DailyCalendar = ({
       <div>
         <Calendar
           classNames={{
-            day_range_start: 'day-range-start',
-            day_range_middle: 'aria-selected:text-black',
-            cell: '[&:has([aria-selected].day-range-end)]:rounded-r-full [&:has([aria-selected].day-range-start)]:rounded-l-full [&:has([aria-selected])]:bg-blue-50 w-full',
-            day_range_end: 'day-range-end',
+            range_start: 'day-range-start rounded-l-full',
+            range_middle: 'aria-selected:[&>button]:text-black',
+            range_end: 'day-range-end rounded-r-full',
+            selected: 'bg-blue-50 [&>button]:bg-primary [&>button]:text-white',
+            // v8에서는 셀 클래스를 덮어써 p-0이 빠져 td 브라우저 기본 padding(1px)이 남았다(행 높이 42px).
+            // Tailwind 4 preflight는 모든 요소 padding을 0으로 만들므로 1px을 명시한다.
+            day: 'text-center text-sm relative w-full p-px focus-within:relative focus-within:z-20',
+            month_caption: 'relative flex h-[34px] items-center justify-between pt-1',
+            nav: 'absolute right-0 top-1 z-10 flex h-[30px] w-[80px] items-center justify-between px-1',
+            button_previous:
+              'inline-flex h-[30px] w-[30px] items-center justify-center rounded-lg border-2 border-transparent bg-transparent p-0',
+            button_next:
+              'inline-flex h-[30px] w-[30px] items-center justify-center rounded-lg border-2 border-transparent bg-transparent p-0',
           }}
           formatters={{
             formatCaption: (date) =>
@@ -117,7 +126,7 @@ const WeekPicker = ({ startDate, onWeekChange }: WeekPickerProps) => {
         </DialogTrigger>
         <DialogContent
           className={cn(
-            'rounded-t-5 bottom-0 top-auto flex max-w-[var(--max-width)] translate-y-0 flex-col justify-center space-y-8 px-7 py-10',
+            'rounded-t-5 top-auto bottom-0 flex max-w-(--max-width) translate-y-0 flex-col justify-center space-y-8 px-7 py-10',
             'data-[state=closed]:slide-out-to-bottom-[200%] data-[state=open]:slide-in-from-bottom-[200%]'
           )}>
           <DailyCalendar defaultStartDate={startDate} changeWeek={changeWeek} />

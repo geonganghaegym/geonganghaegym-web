@@ -174,7 +174,7 @@ export const TrainerInvitePage = () => {
         </Button>
       </Layout.BottomArea>
       <Dialog open={dialogOpen}>
-        <DialogContent className='rounded-t-5 bottom-0 top-auto flex max-w-[var(--max-width)] translate-y-0 flex-col items-center justify-center px-7 py-10'>
+        <DialogContent className='rounded-t-5 bottom-0 top-auto flex max-w-(--max-width) translate-y-0 flex-col items-center justify-center px-7 py-10'>
           <h4 className={Typography.HEADING_4_BOLD}>회원님을 초대해주세요.</h4>
           <p
             className={cn(

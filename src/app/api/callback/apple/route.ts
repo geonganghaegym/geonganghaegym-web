@@ -28,9 +28,14 @@ export async function POST(req: NextRequest) {
     const redirectUrl = new URL('/apple/callback', origin);
 
     if (state) redirectUrl.searchParams.set('state', state);
-    if (code) redirectUrl.searchParams.set('code', code);
-    if (id_token) redirectUrl.searchParams.set('id_token', id_token);
-    if (user) redirectUrl.searchParams.set('user', user);
+
+    // code/id_token/user 는 쿼리 대신 URL fragment 로 전달한다 — fragment 는 서버로
+    // 전송되지 않으므로 리버스 프록시·서버 로그와 Referer 에 남지 않는다.
+    const hashParams = new URLSearchParams();
+    if (code) hashParams.set('code', code);
+    if (id_token) hashParams.set('id_token', id_token);
+    if (user) hashParams.set('user', user);
+    redirectUrl.hash = hashParams.toString();
 
     return NextResponse.redirect(redirectUrl, 302);
   } catch {

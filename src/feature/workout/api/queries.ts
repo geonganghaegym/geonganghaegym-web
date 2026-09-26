@@ -17,6 +17,16 @@ import { WorkoutComment } from '../model/types';
 const DEFAULT_WORKOUT_SIZE = 20;
 const DEFAULT_COMMUNITY_SIZE = 10;
 
+export const workoutKeys = {
+  list: (params?: { memberId: number; searchDate: string }) =>
+    params ? (['workoutList', params] as const) : (['workoutList'] as const),
+  typeList: (params?: { searchValue?: string; exerciseCategory?: string | null }) =>
+    params ? (['workoutTypeList', params] as const) : (['workoutTypeList'] as const),
+  community: (params?: { memberId?: string | number | null }) =>
+    params ? (['community', params] as const) : (['community'] as const),
+  detail: (workoutHistoryId: number) => ['workoutDetail', workoutHistoryId] as const,
+};
+
 export const useWorkoutCategoryListQuery = () => {
   return useQuery<WorkoutCategory[], BaseError>({
     queryKey: ['workoutCategory'],
@@ -62,7 +72,7 @@ export const useWorkoutCommentQuery = ({
 
 export const useWorkoutDetailQuery = (workoutHistoryId: number) => {
   return useQuery<WorkoutDetail, BaseError>({
-    queryKey: ['workoutDetail', workoutHistoryId],
+    queryKey: workoutKeys.detail(workoutHistoryId),
     queryFn: async () => {
       const result = await authApi.get<BaseResponse<WorkoutDetail>>(
         `/api/v1/workout-histories/${workoutHistoryId}`
@@ -89,7 +99,7 @@ export const useWorkoutQuery = ({
   size = DEFAULT_WORKOUT_SIZE,
 }: WorkoutRequest) => {
   return useInfiniteQuery<WorkoutResponse, BaseError>({
-    queryKey: ['workoutList', { memberId, searchDate }],
+    queryKey: workoutKeys.list({ memberId, searchDate }),
     queryFn: async ({ pageParam }) => {
       const res = await authApi.get<BaseResponse<WorkoutResponse>>(
         `/api/v1/members/${memberId}/workout-histories?page=${pageParam as number}&size=${size}&searchDate=${searchDate}`
@@ -119,7 +129,7 @@ export const useWorkoutTypeListQuery = ({
   exerciseCategory,
 }: WorkoutTypeRequest = {}) => {
   return useInfiniteQuery<WorkoutTypeListResponse, BaseError>({
-    queryKey: ['workoutList', { searchValue, exerciseCategory }],
+    queryKey: workoutKeys.typeList({ searchValue, exerciseCategory }),
     queryFn: async ({ pageParam }) => {
       const queryParams = new URLSearchParams();
       queryParams.append('page', (pageParam as number).toString());
@@ -162,7 +172,7 @@ export const useCommunityQuery = ({
   memberId,
 }: CommunityRequest = {}) => {
   return useInfiniteQuery<CommunityResponse, BaseError>({
-    queryKey: ['workoutList', { memberId }],
+    queryKey: workoutKeys.community({ memberId }),
     queryFn: async ({ pageParam }) => {
       const queryParams = new URLSearchParams();
       queryParams.append('page', (pageParam as number).toString());
