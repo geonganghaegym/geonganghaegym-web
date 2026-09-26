@@ -124,6 +124,20 @@ export const OnboardingPage = () => {
             asChild>
             <Link href='?type=student'>회원으로 시작</Link>
           </Button>
+          <div className='flex flex-col items-center gap-y-1'>
+            <p className={cn(Typography.BODY_3, 'text-gray-500')}>
+              가입 없이 먼저 둘러보기
+            </p>
+            <div className='flex items-center gap-x-3'>
+              <ComplimentaryButton memberType='trainer' className='mt-0 text-primary-500'>
+                트레이너 화면
+              </ComplimentaryButton>
+              <span className='text-gray-300'>|</span>
+              <ComplimentaryButton memberType='student' className='mt-0 text-primary-500'>
+                회원 화면
+              </ComplimentaryButton>
+            </div>
+          </div>
         </div>
       </Layout.Contents>
     </Layout>

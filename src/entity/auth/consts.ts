@@ -43,14 +43,24 @@ const getSocialAuthUrl = (provider: SocialProvider) => {
   }
 };
 
+// 체험하기로 로그인하는 공유 계정. 백엔드 COMPLIMENTARY_ACCOUNT_USER_IDS와 맞춘다.
+const COMPLIMENTARY_TRAINER_USER_ID = 'healthy-trainer0';
+const COMPLIMENTARY_STUDENT_USER_ID = 'healthy-student0';
+
+const isComplimentaryAccount = (userId?: string | null) =>
+  userId === COMPLIMENTARY_TRAINER_USER_ID || userId === COMPLIMENTARY_STUDENT_USER_ID;
+
 const POLICY_URL = 'https://mewing-sun-887.notion.site/30a82fa5850c4a90b73f542f9916a735';
 const PRIVACY_URL =
   'https://mewing-sun-887.notion.site/fcc610c6a4c04ae2813be8ff3d98c56b?pvs=4';
 
 export {
+  COMPLIMENTARY_STUDENT_USER_ID,
+  COMPLIMENTARY_TRAINER_USER_ID,
   getBaseRedirectUri,
   getRedirectUri,
   getSocialAuthUrl,
+  isComplimentaryAccount,
   POLICY_URL,
   PRIVACY_URL,
   resolveBaseUri,
