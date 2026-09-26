@@ -27,7 +27,7 @@ env:
   NEXT_PUBLIC_KAKAO_API_KEY: test-kakao-api-key
   NEXT_PUBLIC_API_MOCKING: disabled
   GA_ID: G-TEST1234
-  VAPIDKEY: test-vapid-key
+  NEXT_PUBLIC_VAPID_KEY: test-vapid-key
 
 jobs:
   ci:
@@ -60,7 +60,7 @@ jobs:
           NEXT_PUBLIC_KAKAO_API_KEY=${NEXT_PUBLIC_KAKAO_API_KEY}
           NEXT_PUBLIC_API_MOCKING=${NEXT_PUBLIC_API_MOCKING}
           GA_ID=${GA_ID}
-          VAPIDKEY=${VAPIDKEY}
+          NEXT_PUBLIC_VAPID_KEY=${NEXT_PUBLIC_VAPID_KEY}
           EOF
 
       - name: Run frontend tests

@@ -6,13 +6,12 @@ importScripts('https://www.gstatic.com/firebasejs/9.14.0/firebase-messaging-comp
 
 // // Firebase 앱 구성
 const firebaseConfig = {
-  apiKey: 'AIzaSyCCvaGdXas6LuaCNPeZ9FMCNqhR5VbaL2U',
-  authDomain: 'solar-imprint-417411.firebaseapp.com',
-  projectId: 'solar-imprint-417411',
-  storageBucket: 'solar-imprint-417411.appspot.com',
-  messagingSenderId: '793717607575',
-  appId: '1:793717607575:web:fa7d5b2f29130f3c87add2',
-  measurementId: 'G-F501B0PBYH',
+  apiKey: 'AIzaSyDnhuKuAVg_x5HsS0Mgj8KdAWtmvJpxCLM',
+  authDomain: 'geonganghaejim-640bf.firebaseapp.com',
+  projectId: 'geonganghaejim-640bf',
+  storageBucket: 'geonganghaejim-640bf.firebasestorage.app',
+  messagingSenderId: '212838330552',
+  appId: '1:212838330552:web:2d2e9b4d37ab5a00ad844d',
 };
 
 // Firebase 초기화 (서비스 워커 내에서)

@@ -46,6 +46,7 @@ jobs:
             NEXT_PUBLIC_NAVER_CLIENT_ID=${{ vars.NEXT_PUBLIC_NAVER_CLIENT_ID }}
             NEXT_PUBLIC_GOOGLE_CLIENT_ID=${{ vars.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
             NEXT_PUBLIC_APPLE_CLIENT_ID=${{ vars.NEXT_PUBLIC_APPLE_CLIENT_ID }}
+            NEXT_PUBLIC_VAPID_KEY=${{ vars.NEXT_PUBLIC_VAPID_KEY }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 

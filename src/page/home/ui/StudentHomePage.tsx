@@ -35,7 +35,6 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-  useToast,
 } from '@/shared/ui';
 import { cn } from '@/shared/utils';
 import { Layout } from '@/widget';
@@ -43,8 +42,6 @@ import { Layout } from '@/widget';
 const MAX_RETRY_ATTEMPTS = 3;
 
 export const StudentHomePage = () => {
-  const { errorToast } = useToast();
-
   const [isOpen, setIsOpen] = useState(false);
 
   const { data, isPending } = useStudentHomeDataQuery();
@@ -70,7 +67,7 @@ export const StudentHomePage = () => {
   ) => {
     try {
       const currentToken = await getToken(messaging, {
-        vapidKey: process.env.VAPIDKEY,
+        vapidKey: process.env.NEXT_PUBLIC_VAPID_KEY,
         serviceWorkerRegistration: registration,
       });
       if (currentToken) {
@@ -83,42 +80,26 @@ export const StudentHomePage = () => {
           },
         });
       }
-    } catch (error) {
+    } catch {
+      // 최종 실패(알림 거부·미지원 브라우저 등)는 사용자가 조치할 수 없어 알리지 않는다
       if (attempt < MAX_RETRY_ATTEMPTS) {
         await attemptToGetToken(messaging, registration, attempt + 1);
-      } else {
-        errorToast(`Failed to get token after ${MAX_RETRY_ATTEMPTS} attempts`);
       }
     }
   };
 
   const onMessageFCM = async () => {
     //서비스워커의 토큰은 한번 등록하면 안바뀜
-    let messaging;
-    if ('serviceWorker' in navigator && 'Notification' in window) {
-      messaging = getMessaging(firebaseApp);
-    }
+    if (!('serviceWorker' in navigator && 'Notification' in window)) return;
+    // 알림을 거부했으면 토큰을 받을 수 없다
+    if (Notification.permission === 'denied') return;
+    if (localStorage.getItem('serviceWorkerRegistration')) return;
 
+    const messaging = getMessaging(firebaseApp);
     const registration = await navigator.serviceWorker.register(
       '/firebase-messaging-sw.js'
     );
-
-    // TODO: 첫로그인시에만 띄우기
-    // const permission = await Notification.requestPermission();
-    // if (permission !== 'granted') {
-    //   alert('알림을 허용해 주세요.');
-    //   return;
-    // }
-
-    if (!localStorage.getItem('serviceWorkerRegistration')) {
-      if (registration && messaging) {
-        try {
-          await attemptToGetToken(messaging, registration);
-        } catch (e) {
-          await attemptToGetToken(messaging, registration);
-        }
-      }
-    }
+    await attemptToGetToken(messaging, registration);
   };
 
   useEffect(() => {
