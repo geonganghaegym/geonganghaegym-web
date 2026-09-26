@@ -48,7 +48,7 @@ export default function RootLayout({
         </QueryProvider>
         <ToastProvider />
       </body>
-      <GoogleAnalytics gaId={gaId} />
+      {gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }
