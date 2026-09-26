@@ -47,7 +47,7 @@ const EditAlarmPage = () => {
       <Layout.Contents>
         <h1 className={cn(Typography.HEADING_3, 'bg-white px-7 pb-7 pt-8')}>알림 설정</h1>
         <section className='flex items-center justify-between bg-white px-7 py-[18px]'>
-          <p className={cn(Typography.BODY_1)}>앱 푸쉬 알림</p>
+          <p className={cn(Typography.BODY_1)}>앱 푸시 알림</p>
           {data?.pushAlarmStatus && (
             <Switch
               id='PUSH'

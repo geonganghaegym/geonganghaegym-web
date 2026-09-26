@@ -109,7 +109,7 @@ const CreateWorkoutPage = () => {
           <IconClose />
         </Button>
         <h1 className={cn(Typography.HEADING_4_SEMIBOLD, 'layout-header-title')}>
-          운동기록 작성
+          운동 기록 작성
         </h1>
       </Layout.Header>
       <Layout.Contents className='hide-scrollbar p-7 pb-10'>

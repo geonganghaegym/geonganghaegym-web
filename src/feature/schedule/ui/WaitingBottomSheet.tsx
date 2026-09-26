@@ -81,10 +81,10 @@ export const WaitingBottomSheet = ({ data, date }: Props) => {
       <SheetContent headerType='thumb'>
         <SheetHeader className='mb-8 text-left'>
           <h2 className={cn(Typography.HEADING_4_BOLD, 'mb-2 text-black')}>
-            이 수업 예약대기를 걸어둘까요?
+            이 수업 예약 대기를 걸어둘까요?
           </h2>
           <p className={cn(Typography.TITLE_2, 'text-gray-600')}>
-            취소건 발생시 자동으로 예약되며, 푸쉬 알림을 통해 알려드립니다.
+            취소 건 발생 시 자동으로 예약되며, 푸시 알림을 통해 알려드립니다.
           </p>
         </SheetHeader>
         <div>
@@ -137,7 +137,7 @@ export const WaitingBottomSheet = ({ data, date }: Props) => {
               Typography.TITLE_1_SEMIBOLD
             )}
             onClick={() => handleWaitingSchedule(data.scheduleId)}>
-            예약대기
+            예약 대기
           </Button>
         </SheetFooter>
       </SheetContent>

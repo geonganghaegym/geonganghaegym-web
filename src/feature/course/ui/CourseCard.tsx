@@ -42,7 +42,7 @@ export const CourseCardHeader = ({
 }: CourseCardHeaderProps) => {
   const expirationStatus =
     totalLessonCnt === completedLessonCnt
-      ? `${totalLessonCnt}회 PT수강 만료`
+      ? `${totalLessonCnt}회 PT 수강 만료`
       : `${remainLessonCnt}회 예약할 수 있어요!`;
   return (
     <CardHeader className='px-6 pb-8 pt-7'>

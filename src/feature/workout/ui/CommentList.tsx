@@ -111,7 +111,7 @@ const CommentLi = ({ comment, depth, className, ...props }: CommentLiProps) => {
               onClick={() => {
                 focusOnInput();
               }}>
-              답글달기
+              답글 달기
             </Button>
           )}
         </div>

@@ -30,7 +30,7 @@ export const SignUpCompletePage = () => {
               alt='signUp complete'
             />
             <span className={cn(Typography.HEADING_4_BOLD, 'mb-1 text-primary-500')}>
-              가입완료
+              가입 완료
             </span>
             <p
               className={cn(

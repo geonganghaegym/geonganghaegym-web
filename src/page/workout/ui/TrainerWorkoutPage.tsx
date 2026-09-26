@@ -24,7 +24,7 @@ const TrainerWorkoutPage = ({ memberId }: { memberId: number }) => {
   });
 
   const name = data?.pages[0].mainData.name;
-  const title = name && `${name}님 ` + '운동기록';
+  const title = name && `${name}님 ` + '운동 기록';
 
   const [ref, inView] = useInView({
     threshold: 0.5,

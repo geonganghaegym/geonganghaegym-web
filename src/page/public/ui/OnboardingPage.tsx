@@ -47,7 +47,7 @@ const SelectLoginMethodPage = ({ memberType }: { memberType: string }) => {
                 height={80}
                 alt='Slide image of money'
               />
-              <p className={cn(Typography.BODY_1, 'text-white')}>일정관리</p>
+              <p className={cn(Typography.BODY_1, 'text-white')}>일정 관리</p>
             </div>
             <div className='flex w-[120px] flex-col  items-center gap-y-[14px] rounded-lg bg-[#82C3FF] px-4 py-[17px]'>
               <Image
@@ -56,7 +56,7 @@ const SelectLoginMethodPage = ({ memberType }: { memberType: string }) => {
                 height={80}
                 alt='Slide image of calendar'
               />
-              <p className={cn(Typography.BODY_1, 'text-white')}>회원관리</p>
+              <p className={cn(Typography.BODY_1, 'text-white')}>회원 관리</p>
             </div>
             <div className='flex w-[120px] flex-col items-center gap-y-[14px] rounded-lg bg-[#FFBFDB] px-4 py-[17px] placeholder:mx-[5px]'>
               <Image
@@ -65,7 +65,7 @@ const SelectLoginMethodPage = ({ memberType }: { memberType: string }) => {
                 height={80}
                 alt='Slide image of calendar'
               />
-              <p className={cn(Typography.BODY_1, 'text-white')}>루틴생성</p>
+              <p className={cn(Typography.BODY_1, 'text-white')}>루틴 생성</p>
             </div>
           </RollingBanner>
         </div>

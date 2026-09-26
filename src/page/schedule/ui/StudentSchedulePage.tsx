@@ -315,7 +315,7 @@ export const StudentSchedulePage = () => {
                     )}>
                     <p>잔여 {myReservationData?.course.remainLessonCnt}회</p>
                     <span className={cn(Typography.BODY_2)}>
-                      {myReservationData?.course.totalLessonCnt}회 PT수강권
+                      {myReservationData?.course.totalLessonCnt}회 PT 수강권
                     </span>
                   </article>
                 )}
@@ -340,7 +340,7 @@ export const StudentSchedulePage = () => {
                         'w-fit rounded-full border-none bg-white px-5 py-[5px] text-gray-500',
                         'data-[state=active]:bg-primary-500 data-[state=active]:text-white'
                       )}>
-                      대기중 예약
+                      대기 중 예약
                     </TabsTrigger>
                   </TabsList>
                   <TabsContent value='upcomingReservation' className='w-full'>
@@ -375,7 +375,7 @@ export const StudentSchedulePage = () => {
                 </Tabs>
               </div>
             ) : (
-              <p>로딩중...</p>
+              <p>로딩 중...</p>
             )}
           </TabsContent>
         </Tabs>

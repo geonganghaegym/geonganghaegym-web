@@ -308,7 +308,7 @@ const DisabledSheet = ({ schedule }: { schedule: FlatSchedule }) => {
     <SheetContent side='bottom' className='p-7 pb-11'>
       <div className='flex w-full flex-col'>
         <h3 className={cn(Typography.HEADING_3)}>{title}</h3>
-        <p className={cn(Typography.BODY_1, 'mt-2 text-point')}>예약불가</p>
+        <p className={cn(Typography.BODY_1, 'mt-2 text-point')}>예약 불가</p>
         <div className={cn('mt-7 flex w-full justify-center gap-6')}>
           <DialogClose
             className={cn(

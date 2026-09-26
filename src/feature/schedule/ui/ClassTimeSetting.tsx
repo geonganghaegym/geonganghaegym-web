@@ -90,7 +90,7 @@ export const ClassTimeSetting = ({
     );
   };
 
-  //설정안함 체크박스 클릭시
+  //설정 안 함 체크박스 클릭시
   const resetSettingsOnDisable = () => {
     setIsLunchTimeUnset((prev) => !prev);
 
@@ -226,7 +226,7 @@ export const ClassTimeSetting = ({
                 </div>
                 <div className='flex items-center justify-center'>
                   <span className={cn(Typography.BODY_2, 'mr-1 text-gray-500')}>
-                    설정안함
+                    설정 안 함
                   </span>
                   <label className='custom-checkbox'>
                     <input

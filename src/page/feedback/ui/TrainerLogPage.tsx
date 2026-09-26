@@ -73,7 +73,7 @@ const TrainerLogPage = ({ memberId }: Props) => {
             </AlertDialogTrigger>
             <AlertDialogContent className='gap-0 px-7 py-8'>
               <AlertDialogTitle className={cn(Typography.HEADING_4_BOLD, 'mb-8')}>
-                수업일지가 모두 작성 완료되었습니다.
+                수업 일지가 모두 작성 완료되었습니다.
               </AlertDialogTitle>
               <AlertDialogFooter className='flex flex-row gap-3'>
                 <AlertDialogCancel
@@ -134,7 +134,7 @@ const TrainerLogPage = ({ memberId }: Props) => {
           <div className='flex h-full flex-col items-center justify-center space-y-4'>
             <IconCalendarX width={42} height={42} />
             <p className={cn(Typography.HEADING_4_SEMIBOLD, 'text-gray-400')}>
-              수업일지 내역이 없습니다.
+              수업 일지 내역이 없습니다.
             </p>
           </div>
         )}

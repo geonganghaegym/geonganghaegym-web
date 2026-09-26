@@ -38,7 +38,7 @@ interface WorkoutDetail extends Workout {
   member: WorkoutMember;
 }
 
-// 운동기록 조회 시 반환되는 운동 정보
+// 운동 기록 조회 시 반환되는 운동 정보
 interface Exercise {
   exerciseId: number;
   name: string;
@@ -64,7 +64,7 @@ interface WorkoutComment {
   replies: WorkoutComment[] | null;
 }
 
-// 운동기록 작성 시 운동 정보 요청 형식
+// 운동 기록 작성 시 운동 정보 요청 형식
 type ExerciseForCreate = Omit<Exercise, 'name' | 'workoutHistoryId'>;
 
 // 운동 종류

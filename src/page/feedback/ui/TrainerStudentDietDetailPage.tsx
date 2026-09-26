@@ -104,7 +104,7 @@ export const TrainerStudentDietDetailPage = ({ memberId, dietId }: Props) => {
                       query: { month: month, name: name },
                     }}
                     className={cn(Typography.BODY_3, 'mb-5 block text-gray-600')}>
-                    전체보기
+                    전체 보기
                   </Link>
                 )}
                 <Card className='w-full p-0'>

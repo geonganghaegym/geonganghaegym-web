@@ -142,7 +142,7 @@ const Header = ({ name, memberId }: { name: string; memberId: number }) => {
           </SheetHeader>
 
           <SheetDescription className={cn(Typography.BODY_1, 'mb-10 text-gray-600')}>
-            회원 삭제시 회원 정보, 운동 기록, 예약 내역, 수강권 등은 복구되지 않습니다.
+            회원 삭제 시 회원 정보, 운동 기록, 예약 내역, 수강권 등은 복구되지 않습니다.
           </SheetDescription>
 
           <label className='custom-checkbox mb-10 flex items-center'>

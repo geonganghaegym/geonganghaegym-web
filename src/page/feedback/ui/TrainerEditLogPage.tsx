@@ -90,7 +90,7 @@ const TrainerEditLogPage = ({ logId }: Props) => {
           </AlertDialogTrigger>
           <AlertDialogContent className='py-8'>
             <AlertDialogTitle className={cn(Typography.HEADING_4_BOLD)}>
-              수업일지 수정을 그만둘까요?
+              수업 일지 수정을 그만둘까요?
             </AlertDialogTitle>
             <AlertDialogDescription
               className={cn(Typography.BODY_1, 'mt-3 text-gray-600')}>

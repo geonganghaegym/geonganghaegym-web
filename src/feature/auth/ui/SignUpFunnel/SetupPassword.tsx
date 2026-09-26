@@ -40,7 +40,7 @@ export const SetupPassword = () => {
           {...register('password', {
             minLength: {
               value: 8,
-              message: '비밀번호는 8글자 이상이여야 합니다',
+              message: '비밀번호는 8글자 이상이어야 합니다',
             },
             pattern: {
               value: PASSWORD_REGEXP,
@@ -65,7 +65,7 @@ export const SetupPassword = () => {
           id='passwordConfirm'
           className={errors.passwordConfirm && 'border-point focus:border-point'}
           value={passwordConfirmValue}
-          placeholder='비밀번호를 한번 더 입력해주세요.'
+          placeholder='비밀번호를 한 번 더 입력해주세요.'
           clearValueButton={() => setValue('passwordConfirm', '')}
           {...register('passwordConfirm', {
             validate: (value) =>

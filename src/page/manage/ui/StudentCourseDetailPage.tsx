@@ -178,7 +178,7 @@ export const StudentCourseDetailPage = ({ memberId }: Props) => {
               <IconPlus width={20} height={20} fill='black' />
             </CourseSheetTrigger>
             <CourseSheetContent>
-              <CourseSheetHeader>등록할 수업횟수</CourseSheetHeader>
+              <CourseSheetHeader>등록할 수업 횟수</CourseSheetHeader>
               <CourseSheetInput
                 courseInput={registerInput}
                 setCourseInput={setRegisterInput}
@@ -247,7 +247,7 @@ export const StudentCourseDetailPage = ({ memberId }: Props) => {
                       수업 횟수 추가
                     </CourseSheetTrigger>
                     <CourseSheetContent>
-                      <CourseSheetHeader>추가할 수업횟수</CourseSheetHeader>
+                      <CourseSheetHeader>추가할 수업 횟수</CourseSheetHeader>
                       <CourseSheetInput
                         courseInput={addInput}
                         setCourseInput={setAddInput}
@@ -318,7 +318,7 @@ export const StudentCourseDetailPage = ({ memberId }: Props) => {
                     수강권 등록
                   </CourseSheetTrigger>
                   <CourseSheetContent>
-                    <CourseSheetHeader>등록할 수업횟수</CourseSheetHeader>
+                    <CourseSheetHeader>등록할 수업 횟수</CourseSheetHeader>
                     <CourseSheetInput
                       courseInput={registerInput}
                       setCourseInput={setRegisterInput}

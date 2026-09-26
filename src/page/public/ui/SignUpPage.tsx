@@ -46,7 +46,7 @@ const SignUpPage = () => {
       return errorToast('이메일 인증을 해주세요');
     }
     if (!isIdVerified) {
-      return errorToast('아이디 중복확인을 해주세요');
+      return errorToast('아이디 중복 확인을 해주세요');
     }
     if (!type) return;
 

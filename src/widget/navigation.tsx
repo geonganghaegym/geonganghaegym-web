@@ -158,7 +158,7 @@ const StudentNavigation = ({ className, ...props }: HTMLAttributes<HTMLDivElemen
                 Typography.NAV_TEXT,
                 pathname === '/student/schedule' ? 'text-black' : 'text-gray-700'
               )}>
-              수업예약
+              수업 예약
             </span>
           </Button>
         </li>

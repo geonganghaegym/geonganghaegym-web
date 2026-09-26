@@ -161,7 +161,7 @@ const TrainerCreateLogPage = ({ memberId }: Props) => {
           </AlertDialogTrigger>
           <AlertDialogContent className='py-8'>
             <AlertDialogTitle className={cn(Typography.HEADING_4_BOLD)}>
-              수업일지 작성을 그만둘까요?
+              수업 일지 작성을 그만둘까요?
             </AlertDialogTitle>
             <AlertDialogDescription
               className={cn(Typography.BODY_1, 'mt-3 text-gray-600')}>
@@ -187,7 +187,7 @@ const TrainerCreateLogPage = ({ memberId }: Props) => {
           </AlertDialogContent>
         </AlertDialog>
         <p className={cn(Typography.HEADING_4, 'flex h-full items-center')}>
-          {`${name ? `${name}님 ` : ''}`}수업일지 작성
+          {`${name ? `${name}님 ` : ''}`}수업 일지 작성
         </p>
         <div className='w-[40px] cursor-default bg-transparent' tabIndex={-1}></div>
       </Layout.Header>
@@ -209,7 +209,7 @@ const TrainerCreateLogPage = ({ memberId }: Props) => {
             {selectedLesson === null && (
               <div
                 className={cn(Typography.HEADING_5, 'flex-center h-full text-gray-500')}>
-                수업일지가 모두 작성 완료되었습니다.
+                수업 일지가 모두 작성 완료되었습니다.
               </div>
             )}
             {selectedLesson && selectedLesson !== null && (

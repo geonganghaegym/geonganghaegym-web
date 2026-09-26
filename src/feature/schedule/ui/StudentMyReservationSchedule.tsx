@@ -143,7 +143,7 @@ export const StudentMyReservationSchedule = ({ data }: Props) => {
                         Typography.BODY_3,
                         'absolute right-6 top-[50%] h-11 w-[82px] -translate-y-1/2 transform rounded-md bg-gray-100 text-center text-gray-700'
                       )}>
-                      예약취소
+                      예약 취소
                     </span>
                   </Button>
                 )}
@@ -220,7 +220,7 @@ export const StudentMyReservationSchedule = ({ data }: Props) => {
                       Typography.TITLE_1_SEMIBOLD
                     )}
                     onClick={handleCancelReservation}>
-                    예약취소
+                    예약 취소
                   </Button>
                 </>
               )}

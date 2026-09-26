@@ -66,7 +66,7 @@ const InvitedPage = () => {
             <Link href='#' className='underline'>
               서비스 이용약관에
             </Link>{' '}
-            동의함으로 간주합니다.
+            동의한 것으로 간주합니다.
           </p>
         </Layout.Contents>
       </Layout>

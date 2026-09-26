@@ -298,7 +298,7 @@ export const TrainerHomePage = () => {
                         {item.name}님에게 1회 수강권 지급
                       </h3>
                       <p className={cn(Typography.BODY_1, 'mt-3 text-gray-600')}>
-                        우수회원 수강권 지급은 한달에 1번 가능합니다. 추가 지급은 수강권
+                        우수 회원 수강권 지급은 한 달에 1번 가능합니다. 추가 지급은 수강권
                         횟수 추가를 이용해주세요.
                       </p>
                       <div className='mt-8 flex w-full gap-3'>

@@ -43,7 +43,7 @@ const DailyCalendar = ({
     changeWeek(startOfWeek);
   };
 
-  const buttonText = `${dayjs(startOfWeek).format('M월DD일')} ~ ${dayjs(startOfWeek).add(6, 'days').format('M월DD일')}`;
+  const buttonText = `${dayjs(startOfWeek).format('M월 DD일')} ~ ${dayjs(startOfWeek).add(6, 'days').format('M월 DD일')}`;
 
   return (
     <>

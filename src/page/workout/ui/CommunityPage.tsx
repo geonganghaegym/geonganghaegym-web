@@ -62,7 +62,7 @@ const CommunityPage = () => {
             <IconBack />
           </Button>
           <h1 className={cn(Typography.HEADING_4_SEMIBOLD, 'layout-header-title')}>
-            {posts[0].member.name}님 운동기록
+            {posts[0].member.name}님 운동 기록
           </h1>
         </Layout.Header>
       )}

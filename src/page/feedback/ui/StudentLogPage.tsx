@@ -30,7 +30,7 @@ const StudentLogPage = () => {
           <IconBack />
         </button>
         <h1 className={cn(Typography.HEADING_4_SEMIBOLD, 'layout-header-title')}>
-          수업일지
+          수업 일지
         </h1>
       </Layout.Header>
       <Layout.Contents className='relative overflow-y-hidden py-7'>
@@ -80,7 +80,7 @@ const StudentLogPage = () => {
           <div className='absolute left-0 top-1/2 flex w-full -translate-y-1/2 flex-col items-center justify-center gap-4'>
             <IconCalendarX width={42} height={42} />
             <p className={cn(Typography.HEADING_4_SEMIBOLD, 'text-gray-400')}>
-              수업일지 내역이 없습니다.
+              수업 일지 내역이 없습니다.
             </p>
           </div>
         )}

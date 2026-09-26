@@ -61,7 +61,7 @@ export const StudentMyPage = () => {
             <Link href='/student/log' className='py-5 pl-8 pr-9'>
               <div className='flex flex-col items-center justify-center gap-y-5'>
                 <IconClassLog />
-                수업일지
+                수업 일지
               </div>
             </Link>
             <span className='h-11 w-px border border-gray-200' />
@@ -75,7 +75,7 @@ export const StudentMyPage = () => {
             <Link href='/student/workout' className='py-5 pl-9 pr-8'>
               <div className='flex flex-col items-center justify-center gap-y-5'>
                 <IconExerciseLog />
-                운동기록
+                운동 기록
               </div>
             </Link>
           </article>

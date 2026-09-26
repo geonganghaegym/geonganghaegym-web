@@ -217,7 +217,7 @@ const TrainerStudentDetailPage = ({ memberId }: Props) => {
                                     className={cn('h-fit rounded-full')}
                                     priority
                                   />
-                                  이번달 포인트
+                                  이번 달 포인트
                                 </p>
                               </CardHeader>
                               <CardContent>
@@ -341,7 +341,7 @@ const TrainerStudentDetailPage = ({ memberId }: Props) => {
                 <CardHeader className='mb-7 flex items-center justify-between text-gray-800'>
                   <h4 className={cn(Typography.TITLE_2, 'text-gray-800')}>오늘 식단</h4>
                   <Link href={`/trainer/manage/${memberId}/diet?month=${month}`}>
-                    <p className={cn(Typography.BODY_3, 'text-gray-500')}>식단전체</p>
+                    <p className={cn(Typography.BODY_3, 'text-gray-500')}>식단 전체</p>
                   </Link>
                 </CardHeader>
                 <CardContent className='flex justify-center gap-x-2'>

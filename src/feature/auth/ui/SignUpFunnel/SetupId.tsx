@@ -49,7 +49,7 @@ export const SetupId = ({ idSuccessMsg, isPending, handleIsIdAvailable }: Props)
           className={cn(Typography.HEADING_5, 'h-[50px] w-[76px] rounded-md')}
           onClick={handleIsIdAvailable}
           disabled={isPending}>
-          중복확인
+          중복 확인
         </Button>
       </div>
 

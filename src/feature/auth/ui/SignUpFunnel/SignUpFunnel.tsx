@@ -170,13 +170,13 @@ export const SignUpFunnel = ({
     );
   };
 
-  //아이디 중복확인
+  //아이디 중복 확인
   const handleIsIdAvailable = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIdSuccessMsg('');
     if (!(userIdValue && ID_REGEXP.test(userIdValue))) {
       return setError('userId', {
-        message: '아이디는 소문자,대문자,숫자만 입력할 수 있습니다',
+        message: '아이디는 소문자, 대문자, 숫자만 입력할 수 있습니다',
       });
     }
 
@@ -262,7 +262,7 @@ export const SignUpFunnel = ({
                 checkVerificationCodePending ||
                 Boolean(errors.emailVerifiedCode)
               }>
-              인증완료
+              인증 완료
             </Button>
           ) : (
             <Button

@@ -37,7 +37,7 @@ const NoWaiting = () => {
       <span className='mb-5 w-[35px]'>
         <IconNoSchedule />
       </span>
-      대기중인 수업이 없습니다.
+      대기 중인 수업이 없습니다.
     </li>
   );
 };
@@ -136,7 +136,7 @@ export const StudentMyWaitingSchedule = ({ data }: Props) => {
                         Typography.BODY_3,
                         'absolute right-6 top-[50%] h-11 w-[82px] -translate-y-1/2 transform rounded-md bg-gray-100 text-center text-gray-700'
                       )}>
-                      대기취소
+                      대기 취소
                     </span>
                   </Button>
                 )}
@@ -146,7 +146,7 @@ export const StudentMyWaitingSchedule = ({ data }: Props) => {
           <SheetContent side='bottom' headerType='thumb'>
             <SheetHeader className='mb-8 text-left'>
               <h3 className={cn(Typography.HEADING_4_BOLD, 'mb-2 text-black')}>
-                대기중인 예약 정보
+                대기 중인 예약 정보
               </h3>
             </SheetHeader>
 
@@ -165,7 +165,7 @@ export const StudentMyWaitingSchedule = ({ data }: Props) => {
                     <ReservationCalendarIcon />
                   </dt>
                   <dd className={cn(Typography.BODY_1, 'ml-2 text-gray-600')}>
-                    취소건 발생 시 자동으로 예약되며, 푸쉬 알림을 통해 알려드립니다.
+                    취소 건 발생 시 자동으로 예약되며, 푸시 알림을 통해 알려드립니다.
                   </dd>
                 </dl>
                 <dl className='mb-2 flex items-start justify-start'>
@@ -173,7 +173,7 @@ export const StudentMyWaitingSchedule = ({ data }: Props) => {
                     <CancelCalendarIcon />
                   </dt>
                   <dd className={cn(Typography.BODY_1, 'ml-2 text-gray-600')}>
-                    수업일 기준 24시간 전까지 취소건 발생하지 않을 시 자동 취소됩니다.
+                    수업일 기준 24시간 전까지 취소 건이 발생하지 않을 시 자동 취소됩니다.
                   </dd>
                 </dl>
               </div>
@@ -201,7 +201,7 @@ export const StudentMyWaitingSchedule = ({ data }: Props) => {
                       Typography.TITLE_1_SEMIBOLD
                     )}
                     onClick={handleCancelWaiting}>
-                    대기취소
+                    대기 취소
                   </Button>
                 </>
               )}

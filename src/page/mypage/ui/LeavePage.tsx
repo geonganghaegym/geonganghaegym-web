@@ -62,7 +62,7 @@ const LeavePage = () => {
                 불가능합니다.
               </li>
               <li className='mt-2'>
-                • 회원탈퇴 후 재 가입하더라도 탈퇴 전의 회원 정보, 운동 기록, 예약 내역,
+                • 회원 탈퇴 후 재가입하더라도 탈퇴 전의 회원 정보, 운동 기록, 예약 내역,
                 수강권 등은 복구되지 않습니다.
               </li>
             </ul>
@@ -93,7 +93,7 @@ const LeavePage = () => {
             <DialogContent className='flex w-[320px] flex-col rounded-md bg-white p-7'>
               <h3 className={cn(Typography.TITLE_1_BOLD)}>정말로 탈퇴하시겠어요?</h3>
               <p className={cn(Typography.BODY_2, 'mt-4')}>
-                건강해짐 계정을 삭제하면 회원님의 수강권, 운동기록, 식단 등 모든 정보가
+                건강해짐 계정을 삭제하면 회원님의 수강권, 운동 기록, 식단 등 모든 정보가
                 함께 사라지게 됩니다.
               </p>
               <div className='mt-8 flex gap-3'>

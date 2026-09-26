@@ -44,7 +44,7 @@ const StudentWorkoutPage = () => {
     }
   }, [fetchNextPage, hasNextPage, inView]);
 
-  const title = userInfo?.name ? `${userInfo.name}님 운동기록` : '운동기록';
+  const title = userInfo?.name ? `${userInfo.name}님 운동 기록` : '운동 기록';
 
   return (
     <Layout>

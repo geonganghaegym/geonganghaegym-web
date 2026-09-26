@@ -109,7 +109,7 @@ export const TrainerStudentDietListPage = ({ memberId }: Props) => {
   }, [queryClient]);
 
   return isPending ? (
-    <div>로딩중...</div>
+    <div>로딩 중...</div>
   ) : (
     <Layout>
       <Layout.Header className='justify-start'>

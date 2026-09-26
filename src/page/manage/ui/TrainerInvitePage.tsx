@@ -127,7 +127,7 @@ export const TrainerInvitePage = () => {
             </div>
           </div>
           <div className='flex flex-col gap-y-3'>
-            <p>수업 할 PT 횟수</p>
+            <p>수업할 PT 횟수</p>
             <div
               className={cn(
                 'flex gap-x-4 rounded-md border border-gray-200 bg-white px-6 py-[11.5px] focus-within:border-primary-500',

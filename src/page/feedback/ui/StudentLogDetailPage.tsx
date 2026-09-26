@@ -39,7 +39,7 @@ const StudentLogDetailPage = ({ logId }: Props) => {
         <LogStudentCommentContext.Provider value={value}>
           <Layout.Contents className='px-7'>
             <div className='flex justify-between pb-4 pt-6'>
-              <h3 className={cn(Typography.TITLE_1_BOLD)}>{data.student}님 수업일지</h3>
+              <h3 className={cn(Typography.TITLE_1_BOLD)}>{data.student}님 수업 일지</h3>
             </div>
             <Card className='w-full px-0 pb-0'>
               <CardHeader className={cn(Typography.TITLE_3, 'px-6')}>

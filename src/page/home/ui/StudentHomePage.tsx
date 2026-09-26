@@ -214,7 +214,7 @@ export const StudentHomePage = () => {
                                       className={cn('h-fit rounded-full')}
                                       priority
                                     />
-                                    이번달 포인트
+                                    이번 달 포인트
                                   </p>
                                 </CardHeader>
                                 <CardContent>
@@ -339,7 +339,7 @@ export const StudentHomePage = () => {
                   <Card className='w-full gap-y-8 px-6 py-7'>
                     <CardHeader className='flex items-center justify-start'>
                       <h2 className={cn(Typography.TITLE_2, 'text-gray-800')}>
-                        다음 PT예정일
+                        다음 PT 예정일
                       </h2>
                     </CardHeader>
                     <CardContent className='flex items-center justify-start'>
@@ -374,7 +374,7 @@ export const StudentHomePage = () => {
                     <Link
                       href='/student/log'
                       className={cn(Typography.BODY_3, 'gray-500 h-auto')}>
-                      수업전체
+                      수업 전체
                     </Link>
                   </CardHeader>
                   <Link href={`/student/log/${data?.lessonHistory.id}`}>
@@ -411,7 +411,7 @@ export const StudentHomePage = () => {
                   <Link
                     href={`/student/diet?month=${month}`}
                     className={cn(Typography.BODY_3, 'gray-500 h-auto')}>
-                    식단전체
+                    식단 전체
                   </Link>
                 </CardHeader>
                 <CardContent>

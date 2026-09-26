@@ -166,7 +166,7 @@ const FindIdPage = () => {
               size='full'
               className={cn(Typography.TITLE_1_BOLD)}
               onClick={() => router.back()}>
-              로그인 하기
+              로그인하기
             </Button>
           </Layout.BottomArea>
         </>
