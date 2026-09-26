@@ -64,7 +64,7 @@ export const StudentPointDetailPage = ({ memberId }: Props) => {
     .split('')[1];
 
   return (
-    <Layout type='student'>
+    <Layout type='trainer'>
       <Layout.Header className='justify-start bg-white'>
         <Link href='./' className='h-full w-full'>
           <IconClose width={14} height={14} />

@@ -3,7 +3,7 @@
 import { useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import Image from 'next/image';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -42,6 +42,9 @@ import {
 } from '@/shared/ui';
 import { cn } from '@/shared/utils';
 import { Layout, MonthPicker } from '@/widget';
+
+import { useStudentInfo } from '../hooks/useStudentInfo';
+
 interface Props {
   memberId: number;
 }
@@ -51,8 +54,7 @@ const ITEMS_PER_PAGE = 20;
 export const StudentCourseDetailPage = ({ memberId }: Props) => {
   const { successToast, errorToast } = useToast();
   const router = useRouter();
-  const params = useSearchParams();
-  const name = params.get('name');
+  const { memberInfo } = useStudentInfo(memberId);
   const date = new Date();
   const [searchMonth, setSearchMonth] = useState<Date>(date);
 
@@ -166,7 +168,7 @@ export const StudentCourseDetailPage = ({ memberId }: Props) => {
           <IconBack />
         </button>
         <h2 className={cn(Typography.HEADING_4_SEMIBOLD, 'layout-header-title')}>
-          {name}님 수강권
+          {memberInfo?.name}님 수강권
         </h2>
 
         {historyData?.pages[0]?.mainData.course?.totalLessonCnt ===
