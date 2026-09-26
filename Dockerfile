@@ -1,4 +1,4 @@
-FROM node:24-bookworm-slim AS base
+FROM node:26-bookworm-slim AS base
 
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -41,7 +41,7 @@ RUN test -n "$NEXT_PUBLIC_AUTH_URL"
 RUN test -n "$INTERNAL_API_URL"
 RUN npm run build
 
-FROM node:24-bookworm-slim AS runner
+FROM node:26-bookworm-slim AS runner
 
 WORKDIR /app
 
