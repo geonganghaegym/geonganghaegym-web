@@ -8,7 +8,7 @@ import { Button, useToast } from '@/shared/ui';
 import { cn } from '@/shared/utils';
 import { Layout } from '@/widget';
 
-const CS_EMAIL = 'tobehealthy0127@gmail.com';
+const CS_EMAIL = 'seonwooj0810@gmail.com';
 
 const CSPage = () => {
   const { successToast } = useToast();
