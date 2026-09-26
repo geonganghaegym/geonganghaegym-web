@@ -62,7 +62,12 @@ export const useDeleteProfileImageMutation = () => {
 export const useLogOutMutation = () => {
   return useMutation<BaseResponse<boolean>, BaseError, undefined>({
     mutationFn: async () => {
-      const result = await authApi.post<BaseResponse<boolean>>(`/api/v1/members/logout`);
+      // 이 브라우저의 FCM 토큰만 지우도록 함께 보낸다. 없으면 서버가 회원의 모든 기기 토큰을 지운다
+      const fcmToken = localStorage.getItem('serviceWorkerRegistration');
+      const result = await authApi.post<BaseResponse<boolean>>(
+        `/api/v1/members/logout`,
+        fcmToken ? { fcmToken } : undefined
+      );
       return result.data;
     },
   });
