@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { use, useEffect, useState } from 'react';
 
 import { SocialProvider, useAuthAction, useSocialSignInMutation } from '@/entity/auth';
+import { notifyLegacyNativeLogin } from '@/shared/lib/native-push';
 import { useToast } from '@/shared/ui';
 
 interface StateType {
@@ -92,6 +93,7 @@ export default function Page(props: Props) {
         onSuccess: (result) => {
           const data = result.data;
           setUserInfo(data);
+          notifyLegacyNativeLogin(data.memberId);
           router.push(`/${data.memberType?.toLowerCase()}`);
         },
         onError: (error) => {

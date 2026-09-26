@@ -1,4 +1,5 @@
 import {
+  notifyLegacyNativeLogin,
   resumeNativePushRegistration,
   runNativePushRegistration,
   suspendNativePushRegistration,
@@ -23,4 +24,27 @@ it('로그아웃 전에 진행 중 등록을 기다리고 이후 등록은 차�
   await Promise.all([pending, drain]);
   expect(logout).toHaveBeenCalledTimes(1);
   resumeNativePushRegistration();
+});
+
+describe('notifyLegacyNativeLogin', () => {
+  afterEach(() => {
+    delete (window as { flutter_inappwebview?: unknown }).flutter_inappwebview;
+  });
+
+  it('구버전 앱이 알아듣도록 memberId를 숫자 그대로 Channel에 보낸다', () => {
+    const callHandler = jest.fn(() => Promise.resolve());
+    Object.assign(window, { flutter_inappwebview: { callHandler } });
+    notifyLegacyNativeLogin(42);
+    expect(callHandler).toHaveBeenCalledWith('Channel', 42);
+  });
+
+  it('앱이 거절하거나 브릿지·memberId가 없어도 예외를 던지지 않는다', async () => {
+    notifyLegacyNativeLogin(42);
+    const callHandler = jest.fn(() => Promise.reject(new Error('cast error')));
+    Object.assign(window, { flutter_inappwebview: { callHandler } });
+    notifyLegacyNativeLogin(null);
+    expect(callHandler).not.toHaveBeenCalled();
+    expect(() => notifyLegacyNativeLogin(42)).not.toThrow();
+    await Promise.resolve();
+  });
 });

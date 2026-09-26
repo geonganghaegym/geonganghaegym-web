@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useAuthAction, useSignInMutation } from '@/entity/auth';
+import { notifyLegacyNativeLogin } from '@/shared/lib/native-push';
 import { Typography } from '@/shared/mixin';
 import { Button, TextInput, useToast } from '@/shared/ui';
 import { cn } from '@/shared/utils';
@@ -27,6 +28,7 @@ export const SignInForm = ({ memberType }: { memberType: 'trainer' | 'student' }
       {
         onSuccess: ({ data }) => {
           setUserInfo(data);
+          notifyLegacyNativeLogin(data.memberId);
           router.replace(`/${data.memberType?.toLowerCase()}`);
         },
         onError: (error) => {
