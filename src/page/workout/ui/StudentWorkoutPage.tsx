@@ -89,7 +89,7 @@ const StudentWorkoutPage = () => {
                 <Image src='/images/loading.gif' width={20} height={20} alt='loading' />
               )}
             </div>
-            {data.pages[0].content === null && <NoWorkout />}
+            {!data.pages[0].content?.length && <NoWorkout />}
           </div>
         )}
       </Layout.Contents>

@@ -74,7 +74,8 @@ export const CourseCardContent = ({
   className,
   progressClassName,
 }: CourseCardContentProps) => {
-  const progress = (completedLessonCnt / totalLessonCnt) * 100;
+  // 수강권 횟수보다 진행 횟수가 많은 데이터가 있어 막대가 넘치지 않게 100에서 자른다
+  const progress = Math.min((completedLessonCnt / totalLessonCnt) * 100, 100);
   const expirationTextColor =
     completedLessonCnt === totalLessonCnt ? 'text-gray-300' : 'text-[#8EC7FF]';
   return (
