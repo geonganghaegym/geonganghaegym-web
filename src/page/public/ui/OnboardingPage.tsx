@@ -128,12 +128,17 @@ export const OnboardingPage = () => {
             <p className={cn(Typography.BODY_3, 'text-gray-500')}>
               가입 없이 먼저 둘러보기
             </p>
-            <div className='flex items-center gap-x-3'>
-              <ComplimentaryButton memberType='trainer' className='mt-0 text-primary-500'>
+            {/* 양쪽 칸 폭을 같게 해 구분선을 화면 중앙에 둔다 */}
+            <div className='grid grid-cols-[1fr_auto_1fr] items-center gap-x-3'>
+              <ComplimentaryButton
+                memberType='trainer'
+                className='mt-0 justify-self-end text-primary-500'>
                 트레이너 화면
               </ComplimentaryButton>
               <span className='text-gray-300'>|</span>
-              <ComplimentaryButton memberType='student' className='mt-0 text-primary-500'>
+              <ComplimentaryButton
+                memberType='student'
+                className='mt-0 justify-self-start text-primary-500'>
                 회원 화면
               </ComplimentaryButton>
             </div>
